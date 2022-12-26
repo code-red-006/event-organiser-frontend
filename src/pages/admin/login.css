@@ -1,0 +1,74 @@
+.admin-login{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.admin-login > .title{
+    margin: 2rem;
+    margin-top: 10rem;
+    font-size: 3rem;
+}
+
+.admin-login > form{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 5px;
+    gap: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.admin-login > form > .username-div, .admin-login > form > .password-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-login > form > .username-div> label, .admin-login > form > .password-div > label{
+    font-size: 1.1rem;
+    font-weight: 400;
+    
+}
+
+.admin-login > form input[type="text"], .admin-login > form input[type="password"]{
+    padding: .3rem;
+    min-width: 20vw;
+    border: 2px solid rgba(0, 0, 0, 0.412);
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+.admin-login > form input[type="submit"]{
+    width: fit-content;
+    padding: .3rem .5rem;
+    margin: 0 auto;
+    font-size: 1rem;
+    border-radius: 3px;
+    font-weight: 400;
+    color: white;
+    background-color: black;
+    margin-top: .5rem;
+    cursor: pointer;
+    transition: .4s;
+    border: 2px solid black;
+    font-family: sans-serif;
+}
+
+.admin-login > form input[type="submit"]:hover{
+    background-color: white;
+    color: black; 
+}
+
+.admin-login > p{
+    margin: 1rem;
+    font-family: 'Playball', cursive;
+    font-size: 1.5rem;
+}
+
+.admin-login > .error{
+    color: red;
+    margin: .6rem;
+}
+
