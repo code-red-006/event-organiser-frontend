@@ -4,7 +4,7 @@ import axios from 'axios';
 import { adminBaseURL } from '../../constants';
 import './home.css'
 
-function Home() {
+function AdminHome() {
     const navigate = useNavigate()
     useEffect(()=>{
         const token = localStorage.getItem('token');
@@ -25,4 +25,4 @@ function Home() {
   )
 }
 
-export default Home
+export default AdminHome

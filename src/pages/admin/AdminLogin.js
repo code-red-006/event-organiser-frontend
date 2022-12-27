@@ -6,7 +6,7 @@ import axios from 'axios'
 import { adminBaseURL } from '../../constants';
 
 
-function Login() {
+function AdminLogin() {
   const [data, setData] = useState({ username: "", password: ""});
   const [error, setError] = useState("");
   const [loading, setloading] = useState(false)
@@ -64,4 +64,4 @@ function Login() {
   )
 }
 
-export default Login
+export default AdminLogin
