@@ -9,7 +9,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-          {/* Admin Routes ..*/}
+          {/* Admin Routes ..testing */}
           <Route path='/admin/login' exact element={<AdminLogin />}></Route>
           <Route path='/admin' exact element={<AdminHome />}></Route>
 
