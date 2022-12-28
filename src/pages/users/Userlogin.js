@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 import './login.css'
 import axios from 'axios';
-import { userbaseURL } from '../../constants';
+import { userBaseURL } from '../../constants';
 
 function Userlogin() {
   const [data, setData] = useState({ adm_no: "", password: ""});
@@ -19,7 +19,7 @@ function Userlogin() {
     setloading(true)
     e.preventDefault()
     setError('')
-    const url = `${userbaseURL}/login`;
+    const url = `${userBaseURL}/login`;
     try {
       const res = await axios.post(url, data)
       const token = res.data.token;
