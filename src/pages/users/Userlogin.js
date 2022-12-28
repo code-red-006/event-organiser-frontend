@@ -36,7 +36,12 @@ function Userlogin() {
   }
 
   return (
-    <div>Userlogin</div>
+    <div>
+      {/* desaign login form */}
+      {/* input name and value ="adm_no" */}
+      {/* input name and value="password" */}
+      Userlogin
+    </div>
   )
 }
 
