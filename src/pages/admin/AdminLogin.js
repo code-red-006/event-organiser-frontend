@@ -13,7 +13,8 @@ function AdminLogin() {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value})};
+    setData({ ...data, [e.target.name]: e.target.value})
+  };
 
   const handleSubmit = async(e) =>{
     setloading(true)

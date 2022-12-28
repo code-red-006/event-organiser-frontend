@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import AdminLogin from './pages/admin/AdminLogin'
 import AdminHome from './pages/admin/AdminHome'
 import Userlogin from './pages/users/Userlogin'
+import UserRegister from './pages/users/UserRegister'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path='/admin' exact element={<AdminHome />}></Route>
 
           {/* Users Routes another testing */}
+          <Route path='/register' exact element={<UserRegister />}></Route>
           <Route path='/login' exact element={<Userlogin />}></Route>
       </Routes>
     </BrowserRouter>
