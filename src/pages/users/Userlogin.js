@@ -36,12 +36,30 @@ function Userlogin() {
   }
 
   return (
-    <div>
-      {/* desaign login form */}
-      {/* input name and value ="adm_no" */}
-      {/* input name and value="password" */}
-      Userlogin
-    </div>
+    <div  className='user-login'>
+      {loading && <div className="spinner">
+      <ClipLoader
+        color={'#fffff'}
+        loading={loading}
+        size={30}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+      </div>}
+      <h2 className="title">Login</h2>
+      <form className='form' onSubmit={handleSubmit}>
+        <div className="admn-div">
+          <label className='label' htmlFor="adm_no">admission number</label>
+          <input className='input_adm_no' onChange={handleChange} value={data.adm_no} type="text" name='adm_no' required />
+        </div>
+        <div className="password-div">
+          <label className='label' htmlFor="password">password</label>
+          <input className='input_password' onChange={handleChange} value={data.password} minLength="7" type="password" name='password' required />
+        </div>
+        <input className='submit' type="submit" value="submit" />
+      </form>
+      {error && <span className='error'>{error}</span>} 
+     </div>
   )
 }
 
