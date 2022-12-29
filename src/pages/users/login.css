@@ -1,0 +1,59 @@
+.user-login{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.title{
+    margin: 2rem;
+    margin-top: 10rem;
+    font-size: 3rem;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 5px;
+    gap: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.admn-div,.password-div{
+    display: flex;
+    flex-direction: column;
+}
+.label{
+    font-size: 1.1rem;
+    font-weight: 400;
+    
+}
+.input_adm_no,.input_password{
+    padding: .3rem;
+    min-width: 20vw;
+    border: 2px solid rgba(0, 0, 0, 0.412);
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+.submit{
+    width: fit-content;
+    padding: .3rem .5rem;
+    margin: 0 auto;
+    font-size: 1rem;
+    border-radius: 3px;
+    font-weight: 400;
+    color: white;
+    background-color: black;
+    margin-top: .5rem;
+    cursor: pointer;
+    transition: .4s;
+    border: 2px solid black;
+    font-family: sans-serif;
+}
+.submit:hover{
+    background-color: white;
+    color: black; 
+}
+.error{
+    color: red;
+    margin: .6rem;
+}
