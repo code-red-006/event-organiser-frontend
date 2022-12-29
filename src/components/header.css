@@ -1,0 +1,39 @@
+.header{
+    background-color: black;
+    color: white;
+    padding: 1rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header > h2{
+    font-size: 2rem;
+}
+
+.header > .username{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.header > .username > .box1{
+    background-color: rgb(235, 239, 242);
+    padding: .2rem .6rem;
+    border-radius: .2rem;
+    font-family: sans-serif;
+    color: black;
+}
+
+.header > .username > .box2{
+    padding: .1rem .3rem;    
+    cursor: pointer;
+    border: 2px solid rgb(0, 0, 0);
+    font-family: sans-serif;
+    border-radius: .2rem;
+    transition: .3s ease-in-out;
+}
+
+.header > .username > .box2:hover{
+    border: 2px solid white;
+}

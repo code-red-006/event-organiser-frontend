@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import { useNavigate } from "react-router-dom";
-import ClipLoader from "react-spinners/ClipLoader";
 import './login.css'
 import axios from 'axios';
 import { userBaseURL } from '../../constants';
+import Spinner from '../../components/Spinner';
 
 function Userlogin() {
   const [data, setData] = useState({ adm_no: "", password: ""});
@@ -37,15 +37,7 @@ function Userlogin() {
 
   return (
     <div  className='user-login'>
-      {loading && <div className="spinner">
-      <ClipLoader
-        color={'#fffff'}
-        loading={loading}
-        size={30}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-      />
-      </div>}
+      {loading && <Spinner loading={loading} />}
       <h2 className="title">Login</h2>
       <form className='form' onSubmit={handleSubmit}>
         <div className="admn-div">
