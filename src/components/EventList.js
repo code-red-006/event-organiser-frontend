@@ -33,9 +33,11 @@ function EventList({url, isAdmin}) {
             <h3>{event.event_name}</h3>
             </div>
         })}
-        { isAdmin && <div onClick={()=>setEventForm(true)} className="add-div">
+        { isAdmin && <div  className="add-div">
+          <div onClick={()=>setEventForm(true)}>
           <img src={addIcon} alt=""  />
           <p id='add-label' className='hidden'>Add event</p>
+          </div>
         </div>}
       </div>
         { eventForm && <div className="wrapper">
