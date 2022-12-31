@@ -62,3 +62,22 @@
     align-items: center;
     justify-content: center;
 }
+
+.event-list > .add-event > p{
+    position: relative;
+    top: -45px;
+    left: -10px;
+    z-index: -1;
+    font-weight: bold;
+    transition: .4s;
+    opacity: 0;
+}
+
+.slide{
+    transform: translate(-85px, 0px);
+    opacity: 1!important;
+}
+
+.hidden{
+    visibility: hidden;
+}

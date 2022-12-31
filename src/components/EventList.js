@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
-import './eventList.css'
+import './event.css'
 import addIcon from '../images/add.png'
 import AddEventForm from './AddEventForm';
 
@@ -12,6 +12,18 @@ function EventList({url, isAdmin}) {
   const { data, pending} = useFetch(url, 'events');
   const [eventForm, setEventForm] = useState(false);
 
+  const viewLabel = ()=>{
+    const label = document.getElementById('add-label');
+      label.classList.remove('hidden');
+      label.classList.add('slide')
+  }
+
+  const hideLabel = ()=>{
+    const label = document.getElementById('add-label');
+      label.classList.remove('slide');
+      label.classList.add('hidden')
+  }
+  
   useEffect(()=>{
     if(!pending){
       setEvents(data)
@@ -38,9 +50,10 @@ function EventList({url, isAdmin}) {
           <AddEventForm />
           <button onClick={()=>setEventForm(false)}>Cancel</button>
         </div>}
-        <div className="add-event">
-          <img src={addIcon} onClick={()=>setEventForm(true)} alt=""  />
-        </div>
+       {isAdmin && <div className="add-event">
+          <img src={addIcon} onMouseEnter={viewLabel} onMouseLeave={hideLabel} onClick={()=>setEventForm(true)} alt=""  />
+          <p id='add-label' className='hidden'>Add event</p>
+        </div>}
       
     </div>
   )
