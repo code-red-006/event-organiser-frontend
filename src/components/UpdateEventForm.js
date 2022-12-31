@@ -24,7 +24,7 @@ function UpdateEventForm({ edit }) {
             window.location.reload()
 
         } catch (error) {
-            setError(error);
+            setError(error.response.data.error.msg);
             console.log(error);
 
         } finally{
