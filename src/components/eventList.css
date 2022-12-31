@@ -1,0 +1,64 @@
+.event-list{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.event-list > h2 {
+    margin: 1rem auto;
+}
+
+.event-list > .cards-div{
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.event-list > .cards-div > .card{
+    padding: 1rem;
+    background-color: rgb(244, 244, 244);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 8rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: .2s;
+}
+
+.event-list > .cards-div > .card:hover{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 5px 8px 0px;
+    transform: scale(1.02);
+}
+
+
+.event-list  > .add-event{
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
+}
+
+.event-list > .add-event > img{
+    width: 3.5rem;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 32%) 0px 0px 25px 2px;
+}
+
+.event-list > .add-event > img:hover{
+    transform: rotate(90deg);
+    box-shadow: rgb(0 0 0 / 32%) 0px 0px 50px 10px;
+    
+}
+
+.wrapper{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.189);
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

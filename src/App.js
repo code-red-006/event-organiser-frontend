@@ -6,6 +6,8 @@ import AdminHome from './pages/admin/AdminHome'
 import Userlogin from './pages/users/Userlogin'
 import UserRegister from './pages/users/UserRegister'
 import EventList from './components/EventList'
+import { adminBaseURL } from './constants'
+import ProgramsList from './components/ProgramsList'
 
 function App() {
   return (
@@ -15,7 +17,8 @@ function App() {
           <Route path='/admin/login' exact element={<AdminLogin />}></Route>
           <Route path='/admin' exact element={<AdminHome />}>
             <Route index element={<Navigate to='events' />} ></Route>
-            <Route path='events' element={<EventList />} ></Route>
+            <Route path='events' exact element={<EventList url={`${adminBaseURL}/events`} />} ></Route>
+            <Route path='programs/:eventId' exact element={<ProgramsList />}></Route>
           </Route>
 
           {/* Users Routes another testing */}
