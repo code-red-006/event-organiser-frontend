@@ -21,10 +21,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     min-height: 8rem;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     transition: .2s;
 }
+
+.event-list > .cards-div > .card > .remove > img{
+    width: 2rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.event-list > .cards-div > .card > .remove > img:hover{
+    transform: scale(1.1);
+}
+
 
 .event-list > .cards-div > .card:hover{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 5px 8px 0px;
@@ -59,6 +71,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .event-list > .cards-div > .add-div> div > img{
@@ -70,9 +83,8 @@
 }
 
 .event-list > .cards-div > .add-div > div:hover > img{
-    transform: rotate(90deg);
+    transform: rotate(90deg) scale(1.06);
     box-shadow: rgb(0 0 0 / 32%) 0px 0px 50px 10px;
-    transform: translate(0px,20px);
 }
 
 .event-list > .cards-div > .add-div > div > p{
@@ -85,7 +97,7 @@
 }
 
 .event-list > .cards-div > .add-div > div:hover > p{
-    transform: translate(0px, -20px);
+    transform: translate(0px, -50px);
     opacity: 1!important;
 }
 
