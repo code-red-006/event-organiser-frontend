@@ -1,12 +1,11 @@
 import axios from 'axios';
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
 import { adminBaseURL } from '../constants';
 import Spinner from './Spinner';
 
-function AddEventForm() {
+function UpdateEventForm({ edit }) {
 
-    const [data, setData] = useState({event_name: ''});
+    const [data, setData] = useState({event_name: edit.event_name});
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(null);
     const handleChange = (e) => {
@@ -17,7 +16,7 @@ function AddEventForm() {
         setLoading(true)
         e.preventDefault();
         setError('');
-        const url = `${adminBaseURL}/events`;
+        const url = `${adminBaseURL}/events/edit/${edit._id}`;
         try {
             const token = localStorage.getItem('token');
             const res = await axios.post(url, data, { headers: {'Authorization': `Bearer ${token}`}})
@@ -35,18 +34,18 @@ function AddEventForm() {
 
   return (
     <div className='add-event-form'>
-        <h2>Add event</h2>
-        {loading && <Spinner loading={loading} />}
-        <form onSubmit={handleSubmit}>
-            <div className="name-div">
-                <label htmlFor="event_name">Event Name</label>
-                <input onChange={handleChange} value={data.event_name} type="text" name='event_name' required />
-                <input type="submit" />
-            </div>
-        </form>
-        {error && <span className='error'>{error}</span>} 
-    </div>
+    <h2>Update event</h2>
+    {loading && <Spinner loading={loading} />}
+    <form onSubmit={handleSubmit}>
+        <div className="name-div">
+            <label htmlFor="event_name">Event Name</label>
+            <input onChange={handleChange} value={data.event_name} type="text" name='event_name' required />
+            <input type="submit" />
+        </div>
+    </form>
+    {error && <span className='error'>{error}</span>} 
+</div>
   )
 }
 
-export default AddEventForm
+export default UpdateEventForm

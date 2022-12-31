@@ -27,13 +27,13 @@
     transition: .2s;
 }
 
-.event-list > .cards-div > .card > .remove > img{
-    width: 2rem;
+.event-list > .cards-div > .card > .controls > img{
+    width: 1.5rem;
     cursor: pointer;
     transition: .3s;
 }
 
-.event-list > .cards-div > .card > .remove > img:hover{
+.event-list > .cards-div > .card > .controls > img:hover{
     transform: scale(1.1);
 }
 

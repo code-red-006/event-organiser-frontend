@@ -5,12 +5,16 @@ import './event.css'
 import addIcon from '../images/add.png'
 import AddEventForm from './AddEventForm';
 import bin from '../images/bin.png'
+import editbtn from '../images/edit.png'
 import axios from 'axios';
 import { adminBaseURL } from '../constants';
+import UpdateEventForm from './UpdateEventForm';
 
 
 function EventList({url, isAdmin}) {
   const [events, setEvents] = useState(null);
+  const [editForm, setEditForm] = useState(false);
+  const [edit, setEdit] = useState({})
   const navigate = useNavigate()
   const { data, pending} = useFetch(url, 'events');
   const [eventForm, setEventForm] = useState(false);
@@ -43,6 +47,12 @@ function EventList({url, isAdmin}) {
     }
   }
 
+  const editEvent = (e) => {
+    e.stopPropagation()
+    const index = e.target.dataset.index
+    setEdit(events[index])
+    setEditForm(true)
+  }
 
   return (
     <div className='event-list'>
@@ -51,7 +61,10 @@ function EventList({url, isAdmin}) {
         {events && events.map((event, index)=>{
           return <div key={event._id} className="card" onClick={viewPrograms} data-id={event._id}>
             <h3>{event.event_name}</h3>
-            <div className="remove"><img onClick={removeEvent} data-index={index} src={bin} alt="" /></div>
+            <div className="controls">
+            <img onClick={editEvent} data-index={index} src={editbtn} alt="" />
+            <img onClick={removeEvent} data-index={index} src={bin} alt="" />
+            </div>
             </div>
         })}
         { isAdmin && <div  className="add-div">
@@ -64,6 +77,10 @@ function EventList({url, isAdmin}) {
         { eventForm && <div className="wrapper">
           <AddEventForm />
           <button onClick={()=>setEventForm(false)}>Cancel</button>
+        </div>}
+        { editForm && <div className="wrapper">
+          <UpdateEventForm edit={edit} />
+          <button onClick={()=>setEditForm(false)}>Cancel</button>
         </div>}
     </div>
   )
