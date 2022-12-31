@@ -11,18 +11,6 @@ function EventList({url, isAdmin}) {
   const navigate = useNavigate()
   const { data, pending} = useFetch(url, 'events');
   const [eventForm, setEventForm] = useState(false);
-
-  const viewLabel = ()=>{
-    const label = document.getElementById('add-label');
-      label.classList.remove('hidden');
-      label.classList.add('slide')
-  }
-
-  const hideLabel = ()=>{
-    const label = document.getElementById('add-label');
-      label.classList.remove('slide');
-      label.classList.add('hidden')
-  }
   
   useEffect(()=>{
     if(!pending){
@@ -42,19 +30,18 @@ function EventList({url, isAdmin}) {
       <div className="cards-div">
         {events && events.map((event)=>{
           return <div key={event._id} className="card" onClick={viewPrograms} data-id={event._id}>
-            {event.event_name}
+            <h3>{event.event_name}</h3>
             </div>
         })}
+        { isAdmin && <div onClick={()=>setEventForm(true)} className="add-div">
+          <img src={addIcon} alt=""  />
+          <p id='add-label' className='hidden'>Add event</p>
+        </div>}
       </div>
         { eventForm && <div className="wrapper">
           <AddEventForm />
           <button onClick={()=>setEventForm(false)}>Cancel</button>
         </div>}
-       {isAdmin && <div className="add-event">
-          <img src={addIcon} onMouseEnter={viewLabel} onMouseLeave={hideLabel} onClick={()=>setEventForm(true)} alt=""  />
-          <p id='add-label' className='hidden'>Add event</p>
-        </div>}
-      
     </div>
   )
 }
