@@ -3,20 +3,20 @@ import React, { useState } from 'react'
 import { adminBaseURL } from '../constants';
 import Spinner from './Spinner';
 
-function AddEventForm() {
+function AddSingleForm({eventId}) {
 
-    const [data, setData] = useState({event_name: ''});
+    const [data, setData] = useState({program_name: '', eventId});
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(null);
     const handleChange = (e) => {
-        setData({event_name: e.target.value});
+        setData({...data, program_name: e.target.value});
     }
 
     const handleSubmit = async(e) => {
         setLoading(true)
         e.preventDefault();
         setError('');
-        const url = `${adminBaseURL}/events`;
+        const url = `${adminBaseURL}/events/programs`;
         try {
             const token = localStorage.getItem('token');
             const res = await axios.post(url, data, { headers: {'Authorization': `Bearer ${token}`}})
@@ -34,12 +34,12 @@ function AddEventForm() {
 
   return (
     <div className='add-event-form'>
-        <h2>Add event</h2>
+        <h2>Add Programst</h2>
         {loading && <Spinner loading={loading} />}
         <form onSubmit={handleSubmit}>
             <div className="name-div">
-                <label htmlFor="event_name">Event Name</label>
-                <input onChange={handleChange} value={data.event_name} type="text" name='event_name' required />
+                <label htmlFor="event_name">program Name</label>
+                <input onChange={handleChange} value={data.program_name} type="text" name='program_name' required />
                 <input type="submit" />
             </div>
         </form>
@@ -48,4 +48,4 @@ function AddEventForm() {
   )
 }
 
-export default AddEventForm
+export default AddSingleForm

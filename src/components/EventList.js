@@ -27,7 +27,7 @@ function EventList({url, isAdmin}) {
 
   const viewPrograms = (e) =>{
     console.log(e.target.dataset.id);
-    if(isAdmin) navigate(`/admin/programs/${e.target.dataset.id}`)
+    if(isAdmin) navigate(`/admin/programs/${e.target.dataset.id}/${e.target.dataset.name}`)
     //TODO user route
   }
 
@@ -60,7 +60,7 @@ function EventList({url, isAdmin}) {
       <h2>Events</h2>
       <div className="cards-div">
         {events && events.map((event, index)=>{
-          return <div key={event._id} className="card" onClick={viewPrograms} data-id={event._id}>
+          return <div key={event._id} className="card" onClick={viewPrograms} data-name={event.event_name} data-id={event._id}>
             <h3>{event.event_name}</h3>
             {isAdmin && <div className="controls">
             <img onClick={editEvent} data-index={index} src={editbtn} alt="" />

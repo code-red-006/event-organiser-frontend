@@ -18,7 +18,7 @@ function App() {
           <Route path='/admin' exact element={<AdminHome />}>
             <Route index element={<Navigate to='events' />} ></Route>
             <Route path='events' exact element={<EventList url={`${adminBaseURL}/events`} isAdmin={true} />} ></Route>
-            <Route path='programs/:eventId' exact element={<ProgramsList />}></Route>
+            <Route path='programs/:eventId/:eventName' exact element={<ProgramsList />}></Route>
           </Route>
 
           {/* Users Routes another testing */}
