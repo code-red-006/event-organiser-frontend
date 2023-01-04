@@ -1,0 +1,25 @@
+.menu-bar{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(210, 210, 210);
+}
+
+.menu-bar > h3{
+    padding: 1rem 1.5rem;
+    margin: 0 auto;
+}
+
+.menu-bar > .option > a{
+    display: flex;
+    justify-content: center;
+    padding: 1rem 2rem;
+    background-color: rgb(185, 185, 185);
+    text-decoration: none;
+    color: black;
+    transition: .3s;
+}
+
+.menu-bar > .option > a:hover{
+    color: rgb(255, 255, 255);
+    background-color: black;
+}

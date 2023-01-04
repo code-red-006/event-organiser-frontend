@@ -1,16 +1,25 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useNavigate } from "react-router-dom";
-import ClipLoader from "react-spinners/ClipLoader";
 import './login.css'
 import axios from 'axios'
+import useAdminVerify from '../../hooks/useAdminVerify';
 import { adminBaseURL } from '../../constants';
-
+import Spinner from '../../components/Spinner';
 
 function AdminLogin() {
   const [data, setData] = useState({ username: "", password: ""});
   const [error, setError] = useState("");
-  const [loading, setloading] = useState(false)
+  const [loading, setloading] = useState(true)
   const navigate = useNavigate();
+
+  const { data: res, pending } = useAdminVerify();
+  
+  useEffect(()=>{
+    if(!pending){
+      if(res) navigate('/admin');
+      setloading(false)
+    }
+  }, [pending])
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value})
@@ -38,15 +47,7 @@ function AdminLogin() {
 
   return (
     <div className='admin-login'>
-      {loading && <div className="spinner">
-      <ClipLoader
-        color={'#fffff'}
-        loading={loading}
-        size={30}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-      />
-      </div>}
+      {loading && <Spinner loading={loading} />}
       <h2 className="title">Log in</h2>
       <form onSubmit={handleSubmit}>
         <div className="username-div">
@@ -60,7 +61,7 @@ function AdminLogin() {
         <input type="submit" value="submit" />
       </form>
         {error && <span className='error'>{error}</span>} 
-      <p>Event Organiser</p>
+      <p>Event Organizer</p>
     </div>
   )
 }

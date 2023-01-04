@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 import './UserRegister.css'
 import axios from 'axios';
-import { userBaseURL } from '../../constants';
+import {userBaseURL} from '../../constants'
 
 function UserRegister() {
   const [data, setData] = useState({ name: "", mobile: "", department: "", year: "", adm_no: "", password: ""});
@@ -14,9 +14,61 @@ function UserRegister() {
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value})
   };
+  
+  //user name validation and adding to user register
+const handleChangeUserName =(e) => {
+  if(e.target.value.match("^[a-zA-Z ]*$") != null){
+    setData({ ...data, [e.target.name]: e.target.value})
+  }else{
+    console.log("error in handlechangeusername");
+  }
+}
+
+//phone number val and adding 
+const handleChangeUserPhone = (e)=>{
+  const re = /^[0-9]{1,10}$/;
+
+  if (e.target.value === '' || re.test(e.target.value)) {
+    setData({...data, [e.target.name]: e.target.value})
+  }else{
+    console.log("error in HandleChangePHONE");
+  }
+}
+
+// department val and adding user reg details
+const handleChangeUserDeparment =(e) => {
+  if(e.target.value.match("^[a-zA-Z ]*$") != null){
+    setData({ ...data, [e.target.name]: e.target.value})
+  }else{
+    console.log("error in handlechangeDEPARTMENT");
+  }
+}
+
+//year val and adding to user reg details
+const handleChangeUserYear = (e)=>{
+  const re = /^[1-3]{1}$/;
+
+  if (e.target.value === '' || re.test(e.target.value)) {
+    setData({...data, [e.target.name]: e.target.value})
+  }else{
+    console.log("error in HandleChangeYear");
+  }
+}
+
+//admin_no val and adding to user reg details
+const handleChangeUserPassword = (e)=>{
+  const re = /^[0-9]{1,20}$/;
+
+  if (e.target.value === '' || re.test(e.target.value)) {
+    setData({...data, [e.target.name]: e.target.value})
+  }else{
+    console.log("error in HandleChange'PASSWORD'");
+  }
+}
 
   /* handlesubmit */
 const handleSubmit = async(e) => {
+  console.log("submitting");
   setloading(true);
   e.preventDefault();
   setError('')
@@ -48,7 +100,7 @@ const handleSubmit = async(e) => {
               <label htmlFor="name">Name</label>
               <input type="text" 
                 name="name" 
-                onChange={handleChange} 
+                onChange={handleChangeUserName} 
                 value={data.name}
                 required/>
             </div>
@@ -57,8 +109,7 @@ const handleSubmit = async(e) => {
               <label htmlFor="mobile">Phone Number</label>
               <input type= 'number' 
                 name="mobile" 
-                // max and min
-                onChange={handleChange} 
+                onChange={handleChangeUserPhone} 
                 value={data.mobile}
                 required/>
             </div>
@@ -67,7 +118,7 @@ const handleSubmit = async(e) => {
               <label htmlFor="department">Department</label>
               <input type="text" 
                 name="department" 
-                onChange={handleChange} 
+                onChange={handleChangeUserDeparment} 
                 value={data.department}
                 required/>
             </div>
@@ -77,7 +128,7 @@ const handleSubmit = async(e) => {
               <input type="number" 
                 name="year"
                 // range 1-3
-                onChange={handleChange} 
+                onChange={handleChangeUserYear} 
                 value={data.year}
                 required/>
             </div>
@@ -98,7 +149,7 @@ const handleSubmit = async(e) => {
 
                 // range
 
-                onChange={handleChange} 
+                onChange={handleChangeUserPassword} 
                 value={data.password}
                 required/>
             </div>
