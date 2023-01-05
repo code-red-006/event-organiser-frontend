@@ -56,15 +56,16 @@ const handleChangeUserYear = (e)=>{
 }
 
 //admin_no val and adding to user reg details
-const handleChangeUserPassword = (e)=>{
-  const re = /^[0-9]{1,20}$/;
+// const handleChangeUserPassword = (e)=>{
+//   const re = /^[0-9]{1,20}$/;
 
-  if (e.target.value === '' || re.test(e.target.value)) {
-    setData({...data, [e.target.name]: e.target.value})
-  }else{
-    console.log("error in HandleChange'PASSWORD'");
-  }
-}
+//   if (e.target.value === '' || re.test(e.target.value)) {
+//     setData({...data, [e.target.name]: e.target.value})
+//   }else{
+//     console.log("error in HandleChange'PASSWORD'");
+//   }
+//}
+
 
   /* handlesubmit */
 const handleSubmit = async(e) => {
@@ -149,7 +150,7 @@ const handleSubmit = async(e) => {
 
                 // range
 
-                onChange={handleChangeUserPassword} 
+                onChange={handleChange} 
                 value={data.password}
                 required/>
             </div>
@@ -158,8 +159,9 @@ const handleSubmit = async(e) => {
             </div>
           </form>
       </div>
-
       
+      {error && <div className='error'>{error}</div>}
+
     </div>
   )
 }
