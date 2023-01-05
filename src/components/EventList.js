@@ -9,11 +9,13 @@ import editbtn from '../images/edit.png'
 import axios from 'axios';
 import { adminBaseURL } from '../constants';
 import UpdateEventForm from './UpdateEventForm';
+import Spinner from './Spinner';
 
 
 function EventList({url, isAdmin}) {
   const [events, setEvents] = useState(null);
   const [editForm, setEditForm] = useState(false);
+  const [loading, setLoading] = useState(true)
   const [edit, setEdit] = useState({})
   const navigate = useNavigate()
   const { data, pending} = useFetch(url, 'events');
@@ -22,12 +24,15 @@ function EventList({url, isAdmin}) {
   useEffect(()=>{
     if(!pending){
       setEvents(data)
+      setLoading(false)
     }
   }, [data]);
 
   const viewPrograms = (e) =>{
     console.log(e.target.dataset.id);
-    if(isAdmin) navigate(`/admin/programs/${e.target.dataset.id}/${e.target.dataset.name}`)
+    const id = e.target.dataset.id;
+    const name = e.target.dataset.name;
+    if(isAdmin) navigate(`/admin/programs/${id}/${name}`)
     //TODO user route
   }
 
@@ -57,6 +62,7 @@ function EventList({url, isAdmin}) {
 
   return (
     <div className='event-list'>
+      {loading && <Spinner loading={loading} />}
       <h2>Events</h2>
       <div className="cards-div">
         {events && events.map((event, index)=>{

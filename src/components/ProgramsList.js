@@ -33,11 +33,13 @@ function ProgramsList() {
         <div className="single-div">
           <h2>Single programs</h2>
           <div className="programs">
-            { single && single.map((program, index)=>{
-             return <div key={index} className="program">
-                <h3>{program.program_name}</h3>
-              </div>
-            })}
+            { single?
+                single.length>0?
+                  single.map((program, index)=>{
+                    return <div key={index} className="program">
+                      <h3>{program.program_name}</h3>
+                      </div>
+                 }): "empty" : "loading"}
           <button onClick={()=>setSingleForm(true)} className='add-btn'>Add programs</button>
           </div>
         </div>

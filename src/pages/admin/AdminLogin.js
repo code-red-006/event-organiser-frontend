@@ -47,6 +47,7 @@ function AdminLogin() {
 
   return (
     <div className='admin-login'>
+      
       {loading && <Spinner loading={loading} />}
       <h2 className="title">Log in</h2>
       <form onSubmit={handleSubmit}>
