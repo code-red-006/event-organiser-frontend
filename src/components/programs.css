@@ -29,6 +29,24 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
     transition: .3s;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remove-btn{
+    padding: .3rem;
+    border-radius: 5px;
+    border: 2px solid red;
+    color: white;
+    background-color: red;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: .3s;
+}
+
+.remove-btn:hover{
+    background-color: white;
+    color: red;
 }
 
 .programs-list-div  .programs > .program:hover{

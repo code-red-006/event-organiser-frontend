@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
 import './event.css'
@@ -25,14 +25,15 @@ function EventList({url, isAdmin}) {
     if(!pending){
       setEvents(data)
       setLoading(false)
+      
     }
   }, [data]);
 
   const viewPrograms = (e) =>{
-    console.log(e.target.dataset.id);
-    const id = e.target.dataset.id;
-    const name = e.target.dataset.name;
-    if(isAdmin) navigate(`/admin/programs/${id}/${name}`)
+    //console.log(e.target.closest("[data-id]").dataset.id);
+    const index = e.target.dataset.index;
+    localStorage.setItem('eventId', e.target.closest("[data-id]").dataset.id)
+    if(isAdmin) navigate(`/admin/programs`);
     //TODO user route
   }
 
@@ -66,7 +67,7 @@ function EventList({url, isAdmin}) {
       <h2>Events</h2>
       <div className="cards-div">
         {events && events.map((event, index)=>{
-          return <div key={event._id} className="card" onClick={viewPrograms} data-name={event.event_name} data-id={event._id}>
+          return <div key={event._id} className="card" onClick={viewPrograms} data-name={event.event_name} data-index={index} data-id={event._id}>
             <h3>{event.event_name}</h3>
             {isAdmin && <div className="controls">
             <img onClick={editEvent} data-index={index} src={editbtn} alt="" />
