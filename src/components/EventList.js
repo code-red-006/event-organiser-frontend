@@ -31,7 +31,6 @@ function EventList({url, isAdmin}) {
 
   const viewPrograms = (e) =>{
     //console.log(e.target.closest("[data-id]").dataset.id);
-    const index = e.target.dataset.index;
     localStorage.setItem('eventId', e.target.closest("[data-id]").dataset.id)
     if(isAdmin) navigate(`/admin/programs`);
     //TODO user route

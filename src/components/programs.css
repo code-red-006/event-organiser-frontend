@@ -29,8 +29,8 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
     transition: .3s;
     cursor: pointer;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .remove-btn{
@@ -47,6 +47,28 @@
 .remove-btn:hover{
     background-color: white;
     color: red;
+}
+
+.edit-btn{
+    padding: .3rem;
+    border-radius: 5px;
+    border: 2px solid blue;
+    color: white;
+    background-color: blue;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: .3s;
+}
+
+.edit-btn:hover{
+    background-color: white;
+    color: blue;
+}
+
+.controls{
+    display: flex;
+    gap: .5rem;
+    justify-self: end;
 }
 
 .programs-list-div  .programs > .program:hover{
@@ -74,6 +96,12 @@
     border: 2px solid rgb(0, 158, 5);
 }
 
+.single-div > .programs > .program > .time-div{
+    display: flex;
+    gap: 10px;
+    justify-self: center;
+}
+
 .wrapper > button{
     background-color: red;
     border: none;
@@ -93,4 +121,20 @@
 .wrapper > button:hover{
     background-color: white;
     color: red;
+}
+
+.description-div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 20vh;
+}
+
+.description-div > textarea{
+    border-radius: 5px;
+    border: 2px solid rgba(0, 0, 0, 0.412);;
+    padding: .3rem;
+    font-size: 1rem;
+    resize: none;
+    height: 100%;
 }

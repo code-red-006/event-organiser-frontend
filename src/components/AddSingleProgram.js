@@ -5,11 +5,11 @@ import Spinner from './Spinner';
 
 function AddSingleForm({eventId}) {
 
-    const [data, setData] = useState({program_name: '', eventId});
+    const [data, setData] = useState({program_name: '', description: '', start_time: '', report_time: '', eventId});
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(null);
     const handleChange = (e) => {
-        setData({...data, program_name: e.target.value});
+        setData({...data, [e.target.name]: e.target.value});
     }
 
     const handleSubmit = async(e) => {
@@ -34,14 +34,26 @@ function AddSingleForm({eventId}) {
 
   return (
     <div className='add-event-form'>
-        <h2>Add Programst</h2>
+        <h2>Add Programs</h2>
         {loading && <Spinner loading={loading} />}
         <form onSubmit={handleSubmit}>
             <div className="name-div">
-                <label htmlFor="event_name">program Name</label>
+                <label htmlFor="event_name">Program Name</label>
                 <input onChange={handleChange} value={data.program_name} type="text" name='program_name' required />
-                <input type="submit" />
             </div>
+            <div className="description-div">
+                <label htmlFor='description'>Descripton</label>
+                <textarea value={data.description} name='description' onChange={handleChange} required></textarea>
+            </div>
+            <div className="start-div">
+                <label htmlFor="start_time">Start Time(optional)</label>
+                <input onChange={handleChange} value={data.start_time} type="time" name='start_time'  />
+            </div>
+            <div className="report-div">
+                <label htmlFor="report_time">Report Time(optional)</label>
+                <input onChange={handleChange} value={data.report_time} type="time" max={data.start_time} name='report_time'  />
+            </div>
+                <input type="submit" />
         </form>
         {error && <span className='error'>{error}</span>} 
     </div>
