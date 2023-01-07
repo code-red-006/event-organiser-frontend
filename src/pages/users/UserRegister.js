@@ -4,6 +4,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import './UserRegister.css'
 import axios from 'axios';
 import {userBaseURL} from '../../constants'
+import Spinner from '../../components/Spinner';
 
 function UserRegister() {
   const [data, setData] = useState({ name: "", mobile: "", department: "", year: "", adm_no: "", password: ""});
@@ -92,6 +93,8 @@ const handleSubmit = async(e) => {
 
   return (
     <div className='user-registration'>
+      {loading && <Spinner loading={loading} />}
+
       <h1>Sign up</h1>
 
       <div className={'user-registration-form'}>
