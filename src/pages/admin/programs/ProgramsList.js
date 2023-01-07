@@ -3,13 +3,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { adminBaseURL } from '../../../constants';
 import { SingleProgramContext } from '../../../store/SingleProgramContext';
-import AddSingleForm from './AddSingleProgram';
+import AddProgramForm from './AddProgram';
 import './programs.css'
 
 function ProgramsList() {
     const [single, setSingle] = useState(null);
     const [groupe, setGroupe] = useState(null);
     const [singleForm, setSingleForm] = useState(false);
+    const [groupeForm, setGroupeForm] = useState(false)
     const [eventName, setEventName] = useState(null)
     const token = localStorage.getItem('token')
     const eventId = localStorage.getItem('eventId')
@@ -32,12 +33,16 @@ function ProgramsList() {
       fetchData()
     }, [eventId]);
 
-    const removeSingleProgram = async(e) => {
+    const removeProgram = async(e) => {
       e.stopPropagation();
       const wantRemove = window.confirm("every data under this program will be delated")
       if(!wantRemove) return;
       const programId = e.target.dataset.id;
-      const url = `${adminBaseURL}/events/remove/single/${programId}`
+      
+      const url = e.target.dataset.groupe?
+      `${adminBaseURL}/events/remove/groupe/${programId}` :
+       `${adminBaseURL}/events/remove/single/${programId}`;
+      
       try {
         axios.get(url,  { headers: {'Authorization': `Bearer ${token}`} })
         window.location.reload()
@@ -69,16 +74,42 @@ function ProgramsList() {
                         <p>report time: {program.report_time===''? 'Not set': program.report_time}</p>
                       </div>
                       <div className="controls">
-                       <button data-id={program._id} onClick={removeSingleProgram} className='remove-btn'>Remove</button>
+                       <button data-id={program._id} onClick={removeProgram}  className='remove-btn'>Remove</button>
                       </div>
                       </div>
                  }): "empty" : "loading"}
           <button onClick={()=>setSingleForm(true)} className='add-btn'>Add programs</button>
           </div>
         </div>
+
+        <div className="single-div">
+          <h2>Groupe programs</h2>
+          <div className="programs">
+            { groupe?
+                groupe.length>0?
+                  groupe.map((program, index)=>{
+                    return <div key={index} data-id={program._id} data-index={index}  onClick={viewSingleProgramDetails} className="program">
+                      <h3>{program.program_name}</h3>
+                      <div className="time-div">
+                        <p>start time: {program.start_time===''? 'Not set': program.start_time}</p>
+                        <p>report time: {program.report_time===''? 'Not set': program.report_time}</p>
+                      </div>
+                      <div className="controls">
+                       <button data-id={program._id} onClick={removeProgram} data-groupe={true} className='remove-btn'>Remove</button>
+                      </div>
+                      </div>
+                 }): "empty" : "loading"}
+          <button onClick={()=>setGroupeForm(true)} className='add-btn'>Add programs</button>
+          </div>
+        </div>
+
         {singleForm && <div className="wrapper">
-          <AddSingleForm eventId={eventId} />
+          <AddProgramForm eventId={eventId} />
           <button onClick={()=>setSingleForm(false)}>Cancel</button>
+        </div>}
+        {groupeForm && <div className="wrapper">
+          <AddProgramForm eventId={eventId} groupe={true} />
+          <button onClick={()=>setGroupeForm(false)}>Cancel</button>
         </div>}
     </div>
   )

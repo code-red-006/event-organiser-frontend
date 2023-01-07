@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { adminBaseURL } from '../../../constants';
 import Spinner from '../../partials/Spinner';
 
-function AddSingleForm({eventId}) {
+function AddProgramForm({eventId, groupe}) {
 
     const [data, setData] = useState({program_name: '', description: '', start_time: '', report_time: '', eventId});
     const [error, setError] = useState("");
@@ -17,7 +17,7 @@ function AddSingleForm({eventId}) {
         setLoading(true)
         e.preventDefault();
         setError('');
-        const url = `${adminBaseURL}/events/programs`;
+        const url = groupe? `${adminBaseURL}/events/programs/groupe` : `${adminBaseURL}/events/programs/single`;
         try {
             const token = localStorage.getItem('token');
             const res = await axios.post(url, data, { headers: {'Authorization': `Bearer ${token}`}})
@@ -35,7 +35,7 @@ function AddSingleForm({eventId}) {
 
   return (
     <div className='add-event-form'>
-        <h2>Add Programs</h2>
+        <h2>Add Program</h2>
         {loading && <Spinner loading={loading} />}
         <form onSubmit={handleSubmit}>
             <div className="name-div">
@@ -61,4 +61,4 @@ function AddSingleForm({eventId}) {
   )
 }
 
-export default AddSingleForm
+export default AddProgramForm
