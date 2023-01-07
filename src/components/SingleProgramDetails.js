@@ -4,11 +4,13 @@ import { SingleProgramContext } from '../store/SingleProgramContext';
 
 function SingleProgramDetails() {
     const { id } = useParams()
-    console.log(id);
     const {singleProgramDetails} = useContext(SingleProgramContext);
-    console.log(singleProgramDetails);
+    console.log(singleProgramDetails); // program deatls
   return (
-    <div>SingleProgramDetails</div>
+    <div>
+        SingleProgramDetails
+        {/* display program details  */}
+    </div>
   )
 }
 

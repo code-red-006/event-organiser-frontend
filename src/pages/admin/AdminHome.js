@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import { Outlet, useNavigate } from 'react-router';
-import axios from 'axios';
 import './home.css'
-import Header from '../../components/Header';
-import MenuBar from '../../components/MenuBar';
+import Header from '../../components/partials/Header';
+import MenuBar from '../../components/partials/MenuBar';
 import useAdminVerify from '../../hooks/useAdminVerify';
-import Spinner from '../../components/Spinner';
+import Spinner from '../../components/partials/Spinner';
 
 function AdminHome() {
   const navigate = useNavigate()

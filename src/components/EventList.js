@@ -9,7 +9,7 @@ import editbtn from '../images/edit.png'
 import axios from 'axios';
 import { adminBaseURL } from '../constants';
 import UpdateEventForm from './UpdateEventForm';
-import Spinner from './Spinner';
+import Spinner from './partials/Spinner';
 
 
 function EventList({url, isAdmin}) {

@@ -18,7 +18,6 @@ function ProgramsList() {
 
     useEffect(()=>{
       const fetchData = async() => {
-        console.log(eventId);
         const url = `${adminBaseURL}/events/programs/${eventId}`;
         try {
           const res = await axios.get(url, { headers: {'Authorization': `Bearer ${token}`} });
