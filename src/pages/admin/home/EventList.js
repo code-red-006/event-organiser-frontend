@@ -1,15 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { useFetch } from '../hooks/useFetch';
+import { useFetch } from '../../../hooks/useFetch';
 import './event.css'
-import addIcon from '../images/add.png'
+import addIcon from '../../../images/add.png'
 import AddEventForm from './AddEventForm';
-import bin from '../images/bin.png'
-import editbtn from '../images/edit.png'
+import bin from '../../../images/bin.png'
+import editbtn from '../../../images/edit.png'
 import axios from 'axios';
-import { adminBaseURL } from '../constants';
+import { adminBaseURL } from '../../../constants';
 import UpdateEventForm from './UpdateEventForm';
-import Spinner from './partials/Spinner';
+import Spinner from '../../partials/Spinner';
 
 
 function EventList({url, isAdmin}) {

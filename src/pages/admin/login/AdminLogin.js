@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react'
 import { useNavigate } from "react-router-dom";
 import './login.css'
 import axios from 'axios'
-import useAdminVerify from '../../hooks/useAdminVerify';
-import { adminBaseURL } from '../../constants';
-import Spinner from '../../components/partials/Spinner';
+import useAdminVerify from '../../../hooks/useAdminVerify';
+import { adminBaseURL } from '../../../constants';
+import Spinner from '../../partials/Spinner';
 
 function AdminLogin() {
   const [data, setData] = useState({ username: "", password: ""});

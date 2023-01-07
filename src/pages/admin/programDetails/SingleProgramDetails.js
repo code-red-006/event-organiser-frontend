@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { SingleProgramContext } from '../store/SingleProgramContext';
+import { SingleProgramContext } from '../../../store/SingleProgramContext';
 
 function SingleProgramDetails() {
     const { id } = useParams()

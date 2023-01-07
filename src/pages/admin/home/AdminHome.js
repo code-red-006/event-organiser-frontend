@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import { Outlet, useNavigate } from 'react-router';
 import './home.css'
-import Header from '../../components/partials/Header';
-import MenuBar from '../../components/partials/MenuBar';
-import useAdminVerify from '../../hooks/useAdminVerify';
-import Spinner from '../../components/partials/Spinner';
+import Header from '../../partials/Header';
+import MenuBar from '../../partials/MenuBar';
+import useAdminVerify from '../../../hooks/useAdminVerify';
+import Spinner from '../../partials/Spinner';
 
 function AdminHome() {
   const navigate = useNavigate()
