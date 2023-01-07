@@ -3,10 +3,7 @@ import { useNavigate } from "react-router-dom";
 import './login.css'
 import axios from 'axios';
 import { userBaseURL } from '../../constants';
-///<<<<<<< HEAD
-//=======
-import Spinner from '../../components/Spinner';
-//  >>>>>>> 4c5954aa292d3a1635aa804e2fa7647f636d1ca7
+import Spinner from '../../components/partials/Spinner';
 
 function Userlogin() {
   const [data, setData] = useState({ adm_no: "", password: ""});

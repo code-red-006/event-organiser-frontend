@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
 import './event.css'
@@ -9,11 +9,13 @@ import editbtn from '../images/edit.png'
 import axios from 'axios';
 import { adminBaseURL } from '../constants';
 import UpdateEventForm from './UpdateEventForm';
+import Spinner from './partials/Spinner';
 
 
 function EventList({url, isAdmin}) {
   const [events, setEvents] = useState(null);
   const [editForm, setEditForm] = useState(false);
+  const [loading, setLoading] = useState(true)
   const [edit, setEdit] = useState({})
   const navigate = useNavigate()
   const { data, pending} = useFetch(url, 'events');
@@ -22,12 +24,16 @@ function EventList({url, isAdmin}) {
   useEffect(()=>{
     if(!pending){
       setEvents(data)
+      setLoading(false)
+      
     }
   }, [data]);
 
   const viewPrograms = (e) =>{
-    console.log(e.target.dataset.id);
-    navigate(`/admin/programs/${e.target.dataset.id}`)
+    //console.log(e.target.closest("[data-id]").dataset.id);
+    localStorage.setItem('eventId', e.target.closest("[data-id]").dataset.id)
+    if(isAdmin) navigate(`/admin/programs`);
+    //TODO user route
   }
 
   const removeEvent = (e) => {
@@ -56,16 +62,17 @@ function EventList({url, isAdmin}) {
 
   return (
     <div className='event-list'>
+      {loading && <Spinner loading={loading} />}
       <h2>Events</h2>
       <div className="cards-div">
         {events && events.map((event, index)=>{
-          return <div key={event._id} className="card" onClick={viewPrograms} data-id={event._id}>
+          return <div key={event._id} className="card" onClick={viewPrograms} data-name={event.event_name} data-index={index} data-id={event._id}>
             <h3>{event.event_name}</h3>
-            <div className="controls">
+            {isAdmin && <div className="controls">
             <img onClick={editEvent} data-index={index} src={editbtn} alt="" />
             <img onClick={removeEvent} data-index={index} src={bin} alt="" />
-            </div>
-            </div>
+            </div>}
+            </div> 
         })}
         { isAdmin && <div  className="add-div">
           <div onClick={()=>setEventForm(true)}>

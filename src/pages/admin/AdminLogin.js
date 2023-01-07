@@ -4,7 +4,7 @@ import './login.css'
 import axios from 'axios'
 import useAdminVerify from '../../hooks/useAdminVerify';
 import { adminBaseURL } from '../../constants';
-import Spinner from '../../components/Spinner';
+import Spinner from '../../components/partials/Spinner';
 
 function AdminLogin() {
   const [data, setData] = useState({ username: "", password: ""});
@@ -47,6 +47,7 @@ function AdminLogin() {
 
   return (
     <div className='admin-login'>
+      
       {loading && <Spinner loading={loading} />}
       <h2 className="title">Log in</h2>
       <form onSubmit={handleSubmit}>

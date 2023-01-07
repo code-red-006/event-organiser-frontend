@@ -1,8 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 import { adminBaseURL } from '../constants';
-import Spinner from './Spinner';
+import Spinner from './partials/Spinner';
 
 function AddEventForm() {
 

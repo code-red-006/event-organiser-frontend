@@ -8,6 +8,8 @@ import UserRegister from './pages/users/UserRegister'
 import EventList from './components/EventList'
 import { adminBaseURL } from './constants'
 import ProgramsList from './components/ProgramsList'
+import SingleProgramDetails from './components/SingleProgramDetails'
+import Single from './store/SingleProgramContext'
 
 function App() {
   return (
@@ -15,11 +17,12 @@ function App() {
       <Routes>
           {/* Admin Routes ..testing */}
           <Route path='/admin/login' exact element={<AdminLogin />}></Route>
-          <Route path='/admin' exact element={<AdminHome />}>
-            <Route index element={<Navigate to='events' />} ></Route>
-            <Route path='events' exact element={<EventList url={`${adminBaseURL}/events`} isAdmin={true} />} ></Route>
-            <Route path='programs/:eventId' exact element={<ProgramsList />}></Route>
-          </Route>
+            <Route path='/admin' exact element={<AdminHome />}>
+              <Route index element={<Navigate to='events' />} ></Route>
+              <Route path='events' exact element={<EventList url={`${adminBaseURL}/events`} isAdmin={true} />} ></Route>
+              <Route path='programs' exact element={<Single><ProgramsList /></Single>}></Route>
+              <Route path='programs/:id' exact element={<Single><SingleProgramDetails /></Single>} ></Route>
+            </Route>
 
           {/* Users Routes another testing */}
           <Route path='/register' exact element={<UserRegister />}></Route>

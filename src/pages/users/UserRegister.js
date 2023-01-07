@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
 import { useNavigate } from "react-router-dom";
-import ClipLoader from "react-spinners/ClipLoader";
 import './UserRegister.css'
 import axios from 'axios';
 import {userBaseURL} from '../../constants'
-import Spinner from '../../components/Spinner';
+import Spinner from '../../components/partials/Spinner';
 
 function UserRegister() {
   const [data, setData] = useState({ name: "", mobile: "", department: "", year: "", adm_no: "", password: ""});
