@@ -4,6 +4,13 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem;
+    overflow-y: scroll;
+}
+
+.programs-list-div::-webkit-scrollbar{
+    background-color: black;
+    color: black;
+    width: 200px;
 }
 
 .programs-list-div > h2{
