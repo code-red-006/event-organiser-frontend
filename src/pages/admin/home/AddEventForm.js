@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { adminBaseURL } from '../constants';
-import Spinner from './partials/Spinner';
+import { adminBaseURL } from '../../../constants';
+import Spinner from '../../partials/Spinner';
 
 function AddEventForm() {
 

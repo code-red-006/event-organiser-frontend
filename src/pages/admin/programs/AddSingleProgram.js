@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { adminBaseURL } from '../constants';
-import Spinner from './partials/Spinner';
+import { adminBaseURL } from '../../../constants';
+import Spinner from '../../partials/Spinner';
 
 function AddSingleForm({eventId}) {
 
@@ -10,6 +10,7 @@ function AddSingleForm({eventId}) {
     const [loading, setLoading] = useState(null);
     const handleChange = (e) => {
         setData({...data, [e.target.name]: e.target.value});
+        console.log(data);
     }
 
     const handleSubmit = async(e) => {

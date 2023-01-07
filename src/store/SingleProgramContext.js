@@ -6,9 +6,11 @@ function Single({children}){
     const [singleProgramDetails, setSingleProgramDetails] = useState(null);
 
     return(
+        <>
         <SingleProgramContext.Provider value={{singleProgramDetails, setSingleProgramDetails}}>
             {children}
         </SingleProgramContext.Provider>
+        </>
     )
 }
 
