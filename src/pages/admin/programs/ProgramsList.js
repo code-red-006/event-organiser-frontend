@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { adminBaseURL } from '../../../constants';
-import { SingleProgramContext } from '../../../store/SingleProgramContext';
+import { ProgramContext } from '../../../store/ProgramContext';
 import AddProgramForm from './AddProgram';
 import './programs.css'
 
@@ -15,7 +15,7 @@ function ProgramsList() {
     const token = localStorage.getItem('token')
     const eventId = localStorage.getItem('eventId')
     const navigate = useNavigate()
-    const {setSingleProgramDetails} = useContext(SingleProgramContext)
+    const {setProgramDetails} = useContext(ProgramContext)
 
     useEffect(()=>{
       const fetchData = async() => {
@@ -54,8 +54,16 @@ function ProgramsList() {
     const viewSingleProgramDetails = (e) => {
       const id = e.target.closest("[data-id]").dataset.id;
       const index = e.target.closest("[data-index]").dataset.index;
-      setSingleProgramDetails(single[index])
-      navigate(`/admin/programs/${id}`)
+      const isGroupe = e.target.closest("[data-groupe]").dataset.groupe;
+      console.log(isGroupe);
+      if(isGroupe == 'true'){
+        console.log('hii');
+        setProgramDetails(groupe[index])
+        navigate(`/admin/programs/groupe/${id}`)
+      }else{
+        setProgramDetails(single[index]);
+        navigate(`/admin/programs/single/${id}`)
+      }
     }
 
   return (
@@ -67,7 +75,7 @@ function ProgramsList() {
             { single?
                 single.length>0?
                   single.map((program, index)=>{
-                    return <div key={index} data-id={program._id} data-index={index}  onClick={viewSingleProgramDetails} className="program">
+                    return <div key={index} data-id={program._id} data-groupe={false} data-index={index}  onClick={viewSingleProgramDetails} className="program">
                       <h3>{program.program_name}</h3>
                       <div className="time-div">
                         <p>start time: {program.start_time===''? 'Not set': program.start_time}</p>
@@ -88,7 +96,7 @@ function ProgramsList() {
             { groupe?
                 groupe.length>0?
                   groupe.map((program, index)=>{
-                    return <div key={index} data-id={program._id} data-index={index}  onClick={viewSingleProgramDetails} className="program">
+                    return <div key={index} data-id={program._id} data-groupe={true} data-index={index}  onClick={viewSingleProgramDetails} className="program">
                       <h3>{program.program_name}</h3>
                       <div className="time-div">
                         <p>start time: {program.start_time===''? 'Not set': program.start_time}</p>
