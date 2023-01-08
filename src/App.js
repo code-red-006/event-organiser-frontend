@@ -9,7 +9,8 @@ import EventList from './pages/admin/home/EventList'
 import { adminBaseURL } from './constants'
 import ProgramsList from './pages/admin/programs/ProgramsList'
 import SingleProgramDetails from './pages/admin/programDetails/SingleProgramDetails'
-import Single from './store/SingleProgramContext'
+import Program from './store/ProgramContext'
+import GroupeProgramDetails from './pages/admin/programDetails/GroupeProgramDetails'
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
             <Route path='/admin' exact element={<AdminHome />}>
               <Route index element={<Navigate to='events' />} ></Route>
               <Route path='events' exact element={<EventList url={`${adminBaseURL}/events`} isAdmin={true} />} ></Route>
-              <Route path='programs' exact element={<Single><ProgramsList /></Single>}></Route>
-              <Route path='programs/:id' exact element={<Single><SingleProgramDetails /></Single>} ></Route>
+              <Route path='programs' exact element={<Program><ProgramsList /></Program>}></Route>
+              <Route path='programs/single/:id' exact element={<Program><SingleProgramDetails /></Program>} ></Route>
+              <Route path='programs/groupe/:id' exact element={<Program><GroupeProgramDetails /></Program>} ></Route>
             </Route>
           {/* Users Routes another testing */}
           <Route path='/register' exact element={<UserRegister />}></Route>
