@@ -51,7 +51,7 @@ function ProgramsList() {
       }
     }
 
-    const viewSingleProgramDetails = (e) => {
+    const viewProgramDetails = (e) => {
       const id = e.target.closest("[data-id]").dataset.id;
       const index = e.target.closest("[data-index]").dataset.index;
       const isGroupe = e.target.closest("[data-groupe]").dataset.groupe;
@@ -75,7 +75,7 @@ function ProgramsList() {
             { single?
                 single.length>0?
                   single.map((program, index)=>{
-                    return <div key={index} data-id={program._id} data-groupe={false} data-index={index}  onClick={viewSingleProgramDetails} className="program">
+                    return <div key={index} data-id={program._id} data-groupe={false} data-index={index}  onClick={viewProgramDetails} className="program">
                       <h3>{program.program_name}</h3>
                       <div className="time-div">
                         <p>start time: {program.start_time===''? 'Not set': program.start_time}</p>
@@ -96,7 +96,7 @@ function ProgramsList() {
             { groupe?
                 groupe.length>0?
                   groupe.map((program, index)=>{
-                    return <div key={index} data-id={program._id} data-groupe={true} data-index={index}  onClick={viewSingleProgramDetails} className="program">
+                    return <div key={index} data-id={program._id} data-groupe={true} data-index={index}  onClick={viewProgramDetails} className="program">
                       <h3>{program.program_name}</h3>
                       <div className="time-div">
                         <p>start time: {program.start_time===''? 'Not set': program.start_time}</p>
