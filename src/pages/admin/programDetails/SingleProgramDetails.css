@@ -1,5 +1,6 @@
 .program-details{
     margin: 30px;
+    overflow-y: scroll;
 }
 .program-header h1{
     text-align: center;
