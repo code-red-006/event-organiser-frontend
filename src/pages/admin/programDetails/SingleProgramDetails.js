@@ -4,9 +4,15 @@ import { ProgramContext } from '../../../store/ProgramContext';
 import './SingleProgramDetails.css'
 
 function SingleProgramDetails() {
-    const { id } = useParams()
-    const {programDetails} = useContext(ProgramContext);
-    console.log(programDetails); // program deatls
+  const { id } = useParams()
+  const {programDetails} = useContext(ProgramContext);
+  console.log(programDetails); // program deatls
+
+  const handleEdit= (e)=>{
+    e.preventDefault();
+    console.log("hiii");
+  }
+  
   return (
     <div className='program-details'>
         <div className='program-header'>
@@ -22,6 +28,8 @@ function SingleProgramDetails() {
               <h3>Reporting time</h3>
               <span> {programDetails.report_time} </span>
             </div>
+
+            <button onClick={handleEdit}>Edit</button>
 
           </div>
         </div>
