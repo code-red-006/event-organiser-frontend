@@ -7,7 +7,7 @@ function MenuBar({url}) {
   return (
     <div className='menu-bar'>
       <h3>Dashboard</h3>
-      <div className="option"><Link to='/admin/reset'>Home</Link></div>
+      <div className="option"><Link to='/admin/events'>Home</Link></div>
       <div className="option"><Link to={url} >Reset Password</Link></div>
       <div className="option"><Link>About</Link></div>
 
