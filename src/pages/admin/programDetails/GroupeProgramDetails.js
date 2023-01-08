@@ -3,8 +3,14 @@ import { ProgramContext } from '../../../store/ProgramContext';
 
 function GroupeProgramDetails() {
 
-    const {programDetails} = useContext(ProgramContext);
-    console.log(programDetails); // program deatls
+  const {programDetails} = useContext(ProgramContext);
+  console.log(programDetails); // program deatls
+
+  const handleEdit= (e)=>{
+    e.preventDefault();
+    console.log("hiii");
+  }
+
   return (
     <div className='program-details'>
         <div className='program-header'>
@@ -21,6 +27,7 @@ function GroupeProgramDetails() {
               <span> {programDetails.report_time} </span>
             </div>
 
+            <button onClick={handleEdit}>Edit</button>
           </div>
         </div>
         <div className='participants-list'>
