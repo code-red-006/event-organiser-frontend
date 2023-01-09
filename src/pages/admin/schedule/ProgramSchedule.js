@@ -17,6 +17,12 @@ function ProgramSchedule() {
   return (
     <div>
       {prog.map((program)=>{
+        // not scheduled programs
+        if(program.start_time === '') return <div>{program.program_name}</div>
+      })}
+      <hr />
+      {prog.map((program)=>{
+        if(program.start_time === '') return
         return (<div>{program.program_name}: {program.start_time}</div>)
       })}
     </div>
