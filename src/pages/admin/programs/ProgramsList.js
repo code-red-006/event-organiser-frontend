@@ -66,9 +66,15 @@ function ProgramsList() {
       }
     }
 
+    const scheduleHandler = (e) => {
+      const eventId = e.target.dataset.id
+      navigate(`/admin/programs/schedule/${eventId}`)
+    }
+
   return (
     <div className='programs-list-div'>
         {eventName && <h2>{eventName}</h2>}
+        <button data-id={eventId} onClick={scheduleHandler}>Schedule</button>
         <div className="single-div">
           <h2>Single programs</h2>
           <div className="programs">
