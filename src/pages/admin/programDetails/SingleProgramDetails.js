@@ -1,20 +1,33 @@
-import React, { useContext, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { ProgramContext } from '../../../store/ProgramContext';
+import React, { useContext, useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { adminBaseURL } from '../../../constants'
+import { useFetch } from '../../../hooks/useFetch'
+import Spinner from '../../partials/Spinner'
 import './SingleProgramDetails.css'
+import UpdateProgramForm from './UpdateProgram'
 
 function SingleProgramDetails() {
   const { id } = useParams()
-  const {programDetails} = useContext(ProgramContext);
-  console.log(programDetails); // program deatls
+  const {data: programDetails, pending} = useFetch(`${adminBaseURL}/events/programs/single/${id}`, 'singleProgram')
+  const [loading, setLoading] = useState(true);
+  const [updateForm, setUpdateForm] = useState(false)
+  const navigate = useNavigate()
+
+  useEffect(()=>{
+    if(!pending){
+        if(!programDetails) navigate('/admin/login')
+        setLoading(false)
+    }
+}, [pending])
 
   const handleEdit= (e)=>{
     e.preventDefault();
-    console.log("hiii");
+    setUpdateForm(true);
   }
   
   return (
     <div className='program-details'>
+      {loading && <Spinner loading={loading} />}
         <div className='program-header'>
           <h1> {programDetails.program_name} </h1>
           <p> {programDetails.description} </p>
@@ -56,6 +69,10 @@ function SingleProgramDetails() {
           <div>Dummy</div>
           <div>Dummy</div>
         </div>
+        {updateForm && <div className="wrapper">
+          <UpdateProgramForm eventId={programDetails.event_id} groupe={false} prevData={programDetails} />
+          <button onClick={()=>setUpdateForm(false)}>Cancel</button>
+        </div>}
     </div>
   )
 }

@@ -66,9 +66,15 @@ function ProgramsList() {
       }
     }
 
+    const scheduleHandler = (e) => {
+      const eventId = e.target.dataset.id
+      navigate(`/admin/programs/schedule/${eventId}`)
+    }
+
   return (
     <div className='programs-list-div'>
         {eventName && <h2>{eventName}</h2>}
+        <button data-id={eventId} onClick={scheduleHandler}>Schedule</button>
         <div className="single-div">
           <h2>Single programs</h2>
           <div className="programs">
@@ -78,8 +84,8 @@ function ProgramsList() {
                     return <div key={index} data-id={program._id} data-groupe={false} data-index={index}  onClick={viewProgramDetails} className="program">
                       <h3>{program.program_name}</h3>
                       <div className="time-div">
-                        <p>start time: {program.start_time===''? 'Not set': program.start_time}</p>
-                        <p>report time: {program.report_time===''? 'Not set': program.report_time}</p>
+                        <p>start time: {program.start_time===''? <b>Not set</b>: program.start_time}</p>
+                        <p>report time: {program.report_time===''? <b>Not set</b>: program.report_time}</p>
                       </div>
                       <div className="controls">
                        <button data-id={program._id} onClick={removeProgram}  className='remove-btn'>Remove</button>
@@ -99,8 +105,8 @@ function ProgramsList() {
                     return <div key={index} data-id={program._id} data-groupe={true} data-index={index}  onClick={viewProgramDetails} className="program">
                       <h3>{program.program_name}</h3>
                       <div className="time-div">
-                        <p>start time: {program.start_time===''? 'Not set': program.start_time}</p>
-                        <p>report time: {program.report_time===''? 'Not set': program.report_time}</p>
+                        <p>start time: {program.start_time===''? <b>Not set</b>: program.start_time}</p>
+                        <p>report time: {program.report_time===''? <b>Not set</b>: program.report_time}</p>
                       </div>
                       <div className="controls">
                        <button data-id={program._id} onClick={removeProgram} data-groupe={true} className='remove-btn'>Remove</button>

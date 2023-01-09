@@ -12,6 +12,7 @@ import SingleProgramDetails from './pages/admin/programDetails/SingleProgramDeta
 import Program from './store/ProgramContext'
 import GroupeProgramDetails from './pages/admin/programDetails/GroupeProgramDetails'
 import ResetPasswordForm from './pages/admin/home/ResetPasswordForm'
+import ProgramSchedule from './pages/admin/schedule/ProgramSchedule'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path='programs' exact element={<Program><ProgramsList /></Program>}></Route>
               <Route path='programs/single/:id' exact element={<Program><SingleProgramDetails /></Program>} ></Route>
               <Route path='programs/groupe/:id' exact element={<Program><GroupeProgramDetails /></Program>} ></Route>
+              <Route path='programs/schedule/:eventId' exact element={<ProgramSchedule />}></Route>
               <Route path='reset' exact element={<ResetPasswordForm />}></Route>
             </Route>
           {/* Users Routes another testing */}
