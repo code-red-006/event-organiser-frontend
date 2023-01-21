@@ -24,8 +24,8 @@ function AddEventForm() {
             window.location.reload()
 
         } catch (error) {
-            setError(error);
-            console.log(error);
+            setError(error.response.data.error.msg);
+            //console.log(error.response.data);
 
         } finally{
             setLoading(false)

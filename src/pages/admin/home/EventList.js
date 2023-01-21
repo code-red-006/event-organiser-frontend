@@ -36,7 +36,7 @@ function EventList({url, isAdmin}) {
     //TODO user route
   }
 
-  const removeEvent = (e) => {
+  const removeEvent = async(e) => {
     e.stopPropagation()
     const id = events[e.target.dataset.index]._id
     const wantRemove = window.confirm(`Are you sure You want to delete ${events[e.target.dataset.index].event_name}`)
@@ -44,7 +44,7 @@ function EventList({url, isAdmin}) {
       const url = `${adminBaseURL}/events/delete/${id}`
       const token = localStorage.getItem('token')
       try {
-        axios.get(url, { headers: {'Authorization': `Bearer ${token}`}})
+        await axios.get(url, { headers: {'Authorization': `Bearer ${token}`}})
         window.location.reload()
       } catch (error) {
         console.log(error);
