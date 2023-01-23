@@ -1,0 +1,16 @@
+.scheduler > h2{
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.scheduled-card > div ,.not-scheduled-card > div{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+}
+
+.card-heading{
+    font-weight: bold;
+}
+
