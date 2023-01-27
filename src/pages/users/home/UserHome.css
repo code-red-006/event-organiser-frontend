@@ -1,0 +1,18 @@
+.user-home{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.user-home > .user-body{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-row: 2 / 3;
+    overflow-y: scroll;
+}
+
+.user-home > .user-body::-webkit-scrollbar{
+    background-color: black;
+    width: 200px;
+}
