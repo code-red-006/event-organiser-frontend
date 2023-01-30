@@ -13,6 +13,8 @@ import Program from './store/ProgramContext'
 import GroupeProgramDetails from './pages/admin/programDetails/GroupeProgramDetails'
 import ResetPasswordForm from './pages/admin/home/ResetPasswordForm'
 import ProgramSchedule from './pages/admin/schedule/ProgramSchedule'
+import Home from './pages/users/home/UserHome'
+import UserEvents from './pages/users/home/UserEvents'
 
 function App() {
   return (
@@ -32,6 +34,10 @@ function App() {
           {/* Users Routes another testing */}
           <Route path='/register' exact element={<UserRegister />}></Route>
           <Route path='/login' exact element={<Userlogin />}></Route>
+          <Route path='/' exact element={<Home />}>
+          <Route index element={<Navigate to='events' />} ></Route>
+              <Route path='events' exact element={<UserEvents />} ></Route>
+          </Route>
       </Routes>
     </BrowserRouter>
   )

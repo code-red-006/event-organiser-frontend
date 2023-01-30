@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { adminBaseURL } from '../../../constants';
 import { useFetch } from '../../../hooks/useFetch';
+import './ProgramSchedule.css'
 
 function ProgramSchedule() {
   const {eventId} =  useParams();
@@ -15,16 +16,27 @@ function ProgramSchedule() {
   prog.sort((a,b) => (a.start_time  > b.start_time) ? 1 : ((b.start_time > a.start_time ) ? -1 : 0))
 
   return (
-    <div>
-      {prog.map((program)=>{
-        // not scheduled programs
-        if(program.start_time === '') return <div>{program.program_name}</div>
-      })}
-      <hr />
-      {prog.map((program)=>{
-        if(program.start_time === '') return
-        return (<div>{program.program_name}: {program.start_time}</div>)
-      })}
+    <div className='scheduler'>
+      <h2>PROGRAM SCHEDULE</h2>
+      
+      <div className='scheduled-card'>
+        <div className='card-heading'> Program <span>Time</span></div>
+        {prog.map((program)=>{
+          if(program.start_time === '') return
+          return (<div>{program.program_name} <span> {program.start_time} </span></div>)
+        })}
+
+      </div>
+      
+      <h2>NOT SCHEDULED</h2>
+      
+      <div className='not-scheduled-card'>
+        {prog.map((program)=>{
+          // not scheduled programs
+          if(program.start_time === '') return <div>{program.program_name} <span> ---- </span></div>
+        })}
+
+      </div>
     </div>
   )
 }
