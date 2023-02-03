@@ -5,11 +5,21 @@ import Spinner from '../../partials/Spinner';
 
 function AddEventForm() {
 
-    const [data, setData] = useState({event_name: ''});
+    const [data, setData] = useState({event_name: '',date:'' ,days:'', type: [] });
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(null);
+    const [type, setType] = useState('');
+
+    const handleChangeAdd = (e)=>{
+        setType(e.target.value)
+    }
+    const handleAddType = (e)=>{
+        e.preventDefault();
+        console.log(data)
+    }
+
     const handleChange = (e) => {
-        setData({event_name: e.target.value});
+        setData({...data, [e.target.name]: e.target.value});
     }
 
     const handleSubmit = async(e) => {
@@ -39,11 +49,23 @@ function AddEventForm() {
         <form onSubmit={handleSubmit}>
             <div className="name-div">
                 <label htmlFor="event_name">Event Name</label>
-                <input onChange={handleChange} value={data.event_name} type="text" name='event_name' required />
+                <input onChange={handleChange} value={data.event_name} type="text" name='event_name'  />
+                <label htmlFor="date">Start Date</label>
+                <input onChange={handleChange} value={data.date} type="date" name='date'  />
+                <label htmlFor="date">Days</label>
+                <input onChange={handleChange} value={data.days} type="number" name='days'  />
+                <label htmlFor="type">Type</label>
+                <input onChange={handleChangeAdd} value={type} type="text" name='type'  />
+                <button onclick={handleAddType}> Add</button>
                 <input type="submit" />
             </div>
         </form>
         {error && <span className='error'>{error}</span>} 
+        <div>{data.event_name}</div>
+        <div>{data.date}</div>
+        <div>{data.days}</div>
+        <div>{data.days}</div>
+        <div>{type}</div>
     </div>
   )
 }

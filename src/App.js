@@ -15,6 +15,7 @@ import ResetPasswordForm from './pages/admin/home/ResetPasswordForm'
 import ProgramSchedule from './pages/admin/schedule/ProgramSchedule'
 import Home from './pages/users/home/UserHome'
 import UserEvents from './pages/users/home/UserEvents'
+import UserProgramList from './pages/users/home/UserProgramList'
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path='/' exact element={<Home />}>
           <Route index element={<Navigate to='events' />} ></Route>
               <Route path='events' exact element={<UserEvents />} ></Route>
+              <Route path='events/programs' exact element={<UserProgramList />} ></Route>
           </Route>
       </Routes>
     </BrowserRouter>
