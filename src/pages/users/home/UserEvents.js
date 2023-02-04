@@ -2,10 +2,34 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import './UserEvents.css'
+import { userBaseURL } from '../../../constants'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function UserEvents() {
-  const [test, settest] = useState(['Harry potter', 'Percy Jackson', 'Lord of the Ring', 'Hobbit', 'Good Omens', 'Famous Five', 'Five Find-Outers', 'Dairy of a Wimpy kid']);
+  const token = localStorage.getItem('token')
+  const [Events, setEvents] = useState([]);
+  const navigate = useNavigate()
 
+  useEffect(() => {
+    const fetchData =  async ()=>{
+      try {
+        
+        const res = await axios.get(`${userBaseURL}/events` , { headers: {'Authorization': `Bearer ${token}`} })
+        setEvents(res.data.events)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+
+  },[]);
+
+  const viewPrograms = (e) =>{
+    localStorage.setItem('eventId', e.target.closest("[data-id]").dataset.id)
+    navigate('/events/programs')
+  }
+   
   function getRandomColor() {
   var letters = '0123456789ABCDEF';
   var color = '#';
@@ -19,16 +43,12 @@ function UserEvents() {
     <div className='user-events'>
         <h2>Events</h2>
         <div className='user-event-cards'>
-            {test.map((card)=>{
+            {Events.map((card)=>{
               let bgColor = getRandomColor();
-              console.log(bgColor)
               return (
-                <div style={{backgroundColor : bgColor }}
-                  onClick={()=>{
-                    console.log(`You Clicked ${card}`)
-                  
-                  }}>
-                  <h3>{card}</h3>
+                <div data-id={card._id} style={{backgroundColor : bgColor }}
+                  onClick={viewPrograms}>
+                  <h3>{card.event_name}</h3>
                 </div>
               )
             })}

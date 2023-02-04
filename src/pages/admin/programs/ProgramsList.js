@@ -1,8 +1,7 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 import { adminBaseURL } from '../../../constants';
-import { ProgramContext } from '../../../store/ProgramContext';
 import AddProgramForm from './AddProgram';
 import './programs.css'
 
@@ -13,9 +12,8 @@ function ProgramsList() {
     const [groupeForm, setGroupeForm] = useState(false)
     const [eventName, setEventName] = useState(null)
     const token = localStorage.getItem('token')
-    const eventId = localStorage.getItem('eventId')
+    const {eventId} = useParams() 
     const navigate = useNavigate()
-    const {setProgramDetails} = useContext(ProgramContext)
 
     useEffect(()=>{
       const fetchData = async() => {
@@ -53,15 +51,11 @@ function ProgramsList() {
 
     const viewProgramDetails = (e) => {
       const id = e.target.closest("[data-id]").dataset.id;
-      const index = e.target.closest("[data-index]").dataset.index;
       const isGroupe = e.target.closest("[data-groupe]").dataset.groupe;
       console.log(isGroupe);
       if(isGroupe == 'true'){
-        console.log('hii');
-        setProgramDetails(groupe[index])
         navigate(`/admin/programs/groupe/${id}`)
       }else{
-        setProgramDetails(single[index]);
         navigate(`/admin/programs/single/${id}`)
       }
     }

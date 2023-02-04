@@ -9,12 +9,13 @@ import EventList from './pages/admin/home/EventList'
 import { adminBaseURL } from './constants'
 import ProgramsList from './pages/admin/programs/ProgramsList'
 import SingleProgramDetails from './pages/admin/programDetails/SingleProgramDetails'
-import Program from './store/ProgramContext'
 import GroupeProgramDetails from './pages/admin/programDetails/GroupeProgramDetails'
 import ResetPasswordForm from './pages/admin/home/ResetPasswordForm'
 import ProgramSchedule from './pages/admin/schedule/ProgramSchedule'
 import Home from './pages/users/home/UserHome'
 import UserEvents from './pages/users/home/UserEvents'
+import UserProgramList from './pages/users/home/UserProgramList'
+import ArtsHome from './pages/admin/arts/ArtsHome'
 
 function App() {
   return (
@@ -25,9 +26,10 @@ function App() {
             <Route path='/admin' exact element={<AdminHome />}>
               <Route index element={<Navigate to='events' />} ></Route>
               <Route path='events' exact element={<EventList url={`${adminBaseURL}/events`} isAdmin={true} />} ></Route>
-              <Route path='programs' exact element={<Program><ProgramsList /></Program>}></Route>
-              <Route path='programs/single/:id' exact element={<Program><SingleProgramDetails /></Program>} ></Route>
-              <Route path='programs/groupe/:id' exact element={<Program><GroupeProgramDetails /></Program>} ></Route>
+              <Route path='programs/:eventId' exact element={<ProgramsList />}></Route>
+              <Route path='arts/:eventId' exact element={<ArtsHome />}></Route>
+              <Route path='programs/single/:id' exact element={<SingleProgramDetails />} ></Route>
+              <Route path='programs/groupe/:id' exact element={<GroupeProgramDetails />} ></Route>
               <Route path='programs/schedule/:eventId' exact element={<ProgramSchedule />}></Route>
               <Route path='reset' exact element={<ResetPasswordForm />}></Route>
             </Route>
@@ -37,6 +39,7 @@ function App() {
           <Route path='/' exact element={<Home />}>
           <Route index element={<Navigate to='events' />} ></Route>
               <Route path='events' exact element={<UserEvents />} ></Route>
+              <Route path='events/programs' exact element={<UserProgramList />} ></Route>
           </Route>
       </Routes>
     </BrowserRouter>
