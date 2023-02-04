@@ -33,9 +33,9 @@ function EventList({url, isAdmin}) {
     //console.log(e.target.closest("[data-id]").dataset.id);
     const eventId = e.target.closest("[data-id]").dataset.id
     const index = e.target.closest("[data-index]").dataset.index;
-    if(data[index].type === "Arts") return navigate(`/admin/arts/${eventId}`);
+    if(data[index].type === "Arts") return navigate(`/admin/arts/${eventId}/details`, {state:{event: events[index]}});
 
-    navigate(`admin/programs/${eventId}`)
+    navigate(`/admin/programs/${eventId}`)
 
   }
 
