@@ -31,9 +31,12 @@ function EventList({url, isAdmin}) {
 
   const viewPrograms = (e) =>{
     //console.log(e.target.closest("[data-id]").dataset.id);
-    localStorage.setItem('eventId', e.target.closest("[data-id]").dataset.id)
-    if(isAdmin) navigate(`/admin/programs`);
-    //TODO user route
+    const eventId = e.target.closest("[data-id]").dataset.id
+    const index = e.target.closest("[data-index]").dataset.index;
+    if(data[index].type === "Arts") return navigate(`/admin/arts/${eventId}`);
+
+    navigate(`admin/programs/${eventId}`)
+
   }
 
   const removeEvent = async(e) => {
@@ -68,6 +71,7 @@ function EventList({url, isAdmin}) {
         {events && events.map((event, index)=>{
           return <div key={event._id} className="card" onClick={viewPrograms} data-name={event.event_name} data-index={index} data-id={event._id}>
             <h3>{event.event_name}</h3>
+            <p>{event.date}</p>
             {isAdmin && <div className="controls">
             <img onClick={editEvent} data-index={index} src={editbtn} alt="" />
             <img onClick={removeEvent} data-index={index} src={bin} alt="" />
