@@ -16,12 +16,31 @@ function ArtsDetails() {
 
   return (
     <div className="arts-details">
-        <div>{event.event_name}</div>
-        <div>{event.days}</div>
-        <div>{event.date}</div>
-        <div>{event.houses && event.houses.map((item, key)=><p key={key}>{item}</p>)}</div>
+      <div className='static-details'>
+      <div>
+        <h1>... {event.event_name} ...</h1>
+      </div>
+        <div className='time-days'>
+          <div>
+            <p>Days Left</p>
+            <h1>{event.days}</h1>
+          </div>
+          <div>
+            <p>Starts on</p>
+            <h1>{event.date}</h1>
+          </div>
+        </div>
+      </div>
+
+        <div className="house-names">
+          {event.houses && event.houses.map((item, key)=><div key={key} >
+            {item}
+          </div>)}
+        </div>
     </div>
   )
 }
 
 export default ArtsDetails
+
+
