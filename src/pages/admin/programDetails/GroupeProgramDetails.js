@@ -16,6 +16,7 @@ function GroupeProgramDetails() {
     if(!pending){
         if(!programDetails) navigate('/admin/login')
         setLoading(false)
+        console.log(programDetails);
     }
 }, [pending])
 
@@ -40,6 +41,11 @@ function GroupeProgramDetails() {
               <h3>Reporting time</h3>
               <span> {programDetails.report_time} </span>
             </div>
+
+            {programDetails.type && <div>
+              <h3>type</h3>
+              <span> {programDetails.type} </span>
+            </div>}
 
             <button onClick={handleEdit}>Edit</button>
           </div>

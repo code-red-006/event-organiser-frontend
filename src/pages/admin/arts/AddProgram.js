@@ -5,7 +5,7 @@ import Spinner from '../../partials/Spinner';
 
 function AddProgramForm({eventId, groupe}) {
 
-    const [data, setData] = useState({program_name: '', description: '', start_time: '', report_time: '', eventId});
+    const [data, setData] = useState({program_name: '', description: '', type: 'on-stage', start_time: '', report_time: '', eventId});
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(null);
     const handleChange = (e) => {
@@ -46,8 +46,15 @@ function AddProgramForm({eventId, groupe}) {
                 <label htmlFor='description'>Descripton</label>
                 <textarea value={data.description} name='description' onChange={handleChange} required></textarea>
             </div>
+            <div className="type-div">
+            <label htmlFor="type">Type:</label>
+                <select onChange={handleChange} name="type" id="type">
+                    <option value="on-stage">On-stage</option>
+                    <option value="off-stage">Off-stage</option>
+                </select>
+            </div>
             <div className="start-div">
-                <label htmlFor="start_time">Start Time(optional)</label>
+                <label htmlFor="start_time">Start Time</label>
                 <input onChange={handleChange} value={data.start_time} type="time" name='start_time'  />
             </div>
             <div className="report-div">

@@ -6,6 +6,7 @@ import UserEvents from "../../users/home/UserEvents";
 
 function ArtsDetails() {
   const { eventId } = useParams();
+  console.log('hooi');
 
   const { data: event, pending } = useFetch(
     `${adminBaseURL}/events/${eventId}`,
@@ -13,10 +14,10 @@ function ArtsDetails() {
   );
 
   useEffect(() => {
-    if (!pending) console.log(event.houses);
+    if (!pending) console.log(event);
   }, [pending]);
 
-  return (
+  return (event &&
     <div className="arts-details">
       <div className="static-details">
         <div>
@@ -37,7 +38,7 @@ function ArtsDetails() {
 
       <div className="house-names">
         {event.houses &&
-          event.houses.map((item, key) => <div key={key}>{item}</div>)}
+          event.houses.map((item, key) => <div key={key}>{item.name}</div>)}
       </div>
     </div>
   );
