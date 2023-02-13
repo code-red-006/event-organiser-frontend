@@ -5,6 +5,7 @@ import { useFetch } from '../../../hooks/useFetch'
 import Spinner from '../../partials/Spinner'
 import './SingleProgramDetails.css'
 import UpdateProgramForm from './UpdateProgram'
+import { Table } from 'react-bootstrap'
 
 function SingleProgramDetails() {
   const { id } = useParams()
@@ -54,27 +55,32 @@ function SingleProgramDetails() {
         </div>
         <div className='participants-list'>
           <h2>Participants</h2>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
+          <div className='participants-table'>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Chest No.</th>
+                </tr>
+              </thead>
+              <tbody>
+                {programDetails.participants? programDetails.participants.map((participant,index)=>{
+                  return (
+                    <tr>
+                      <td>{index + 1}</td>
+                      <td>{participant.name}</td>
+                      <td>{participant.chestNo}</td>
+                    </tr>
+                  )
+                } ): <div>No Participant</div> }
+              </tbody>
+            </Table>
+          </div>
         </div>
+
+
+
         {updateForm && <div className="wrapper">
           <UpdateProgramForm eventId={programDetails.event_id} groupe={false} prevData={programDetails} />
           <button onClick={()=>setUpdateForm(false)}>Cancel</button>

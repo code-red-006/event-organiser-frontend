@@ -50,3 +50,7 @@
     text-transform: uppercase;
     padding: 10px;
 }
+
+.participants-list > .participants-table{
+    padding: 40px 200px;
+}
