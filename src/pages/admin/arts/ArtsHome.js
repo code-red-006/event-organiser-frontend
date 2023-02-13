@@ -5,7 +5,6 @@ import "./arts.css";
 function ArtsHome() {
   const [prev, setPrev] = useState(null);
 
-
   const location = useLocation();
   const loc = location.pathname.split("/");
 
