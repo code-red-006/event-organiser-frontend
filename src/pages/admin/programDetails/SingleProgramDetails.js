@@ -5,7 +5,6 @@ import { useFetch } from '../../../hooks/useFetch'
 import Spinner from '../../partials/Spinner'
 import './SingleProgramDetails.css'
 import UpdateProgramForm from './UpdateProgram'
-import { Table } from 'react-bootstrap'
 
 function SingleProgramDetails() {
   const { id } = useParams()
@@ -56,7 +55,9 @@ function SingleProgramDetails() {
         <div className='participants-list'>
           <h2>Participants</h2>
           <div className='participants-table'>
-            <Table striped bordered hover>
+          
+          {programDetails.participants?
+            <table >
               <thead>
                 <tr>
                   <th>#</th>
@@ -65,7 +66,8 @@ function SingleProgramDetails() {
                 </tr>
               </thead>
               <tbody>
-                {programDetails.participants? programDetails.participants.map((participant,index)=>{
+
+                {programDetails.participants.map((participant,index)=>{
                   return (
                     <tr>
                       <td>{index + 1}</td>
@@ -73,9 +75,11 @@ function SingleProgramDetails() {
                       <td>{participant.chestNo}</td>
                     </tr>
                   )
-                } ): <div>No Participant</div> }
+                } )}
               </tbody>
-            </Table>
+            </table>
+            : <div>No Participant</div>
+          }
           </div>
         </div>
 
