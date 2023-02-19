@@ -5,7 +5,7 @@ import { useFetch } from '../../../hooks/useFetch';
 import './ProgramSchedule.css'
 
 function ProgramSchedule() {
-  const {eventId} =  useParams();
+  const { eventId } =  useParams();
   const url = `${adminBaseURL}/events/programs/${eventId}`
   
   const { data: single} = useFetch(url,'single')
@@ -22,18 +22,7 @@ function ProgramSchedule() {
       <div className='scheduled-card'>
         <div className='card-heading'> Program <span>Time</span></div>
         {prog.map((program)=>{
-          if(program.start_time === '') return
           return (<div>{program.program_name} <span> {program.start_time} </span></div>)
-        })}
-
-      </div>
-      
-      <h2>NOT SCHEDULED</h2>
-      
-      <div className='not-scheduled-card'>
-        {prog.map((program)=>{
-          // not scheduled programs
-          if(program.start_time === '') return <div>{program.program_name} <span> ---- </span></div>
         })}
 
       </div>

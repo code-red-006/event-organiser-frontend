@@ -3,6 +3,11 @@
     margin: 20px 0px;
 }
 
+.scheduler{
+    margin-top: 3rem;
+    flex: 1;
+}
+
 .scheduled-card > div ,.not-scheduled-card > div{
     display: flex;
     justify-content: space-between;
