@@ -4,18 +4,50 @@
 }
 
 .scheduler{
-    margin-top: 3rem;
+    margin-top: 1rem;
     flex: 1;
-}
-
-.scheduled-card > div ,.not-scheduled-card > div{
     display: flex;
-    justify-content: space-between;
-    padding: 10px;
-
+    flex-direction: column;
+    overflow-y: scroll;
+    padding: 2rem;
 }
 
-.card-heading{
+.scheduled-card{
+    display: flex;
+    gap: .5rem;
+    flex-direction: column;
+}
+
+.scheduled-card > table, .scheduled-card > table > tr > td,.scheduled-card > table > tr > th{
+    border: .5px solid rgba(0, 0, 0, 0.332);
+    
+}
+
+.scheduled-card > table > tr > th{
     font-weight: bold;
+    font-size: 1.5rem;
 }
+
+.scheduled-card > table > tr > td{
+    font-size: larger;
+    font-weight: 500;
+    padding: .5rem;
+    transition: .3s;
+}
+
+.scheduled-card > table > tr > .program:hover,.scheduled-card > table > tr > .finish:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.finish, .time{
+    text-align: center;
+}
+
+
+
+
+
+
 
