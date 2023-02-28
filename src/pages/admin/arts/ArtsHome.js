@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import "./arts.css";
 
 function ArtsHome() {
   const [prev, setPrev] = useState(null);
+  const { eventId } = useParams();
 
   const location = useLocation();
   const loc = location.pathname.split("/");
@@ -16,9 +17,21 @@ function ArtsHome() {
   }
 
   useEffect(() => {
+    let elem;
+    switch (loc[loc.length - 1]) {
+      case "details": elem = 0;
+      break;
+      case "programs": elem = 1;
+      break;
+      case "schedule": elem = 2;
+      break;
+      case "score": elem = 3;
+      break;
+      default: elem = 0;
+        break;
+    }
     document.querySelectorAll(".link").forEach((link, index) => {
       if (prev === null) {
-        const elem = loc[loc.length - 1] === "details" ? 0 : 1;
         if (elem === index){
             link.classList.add("clicked");
             setPrev(link)
@@ -41,6 +54,12 @@ function ArtsHome() {
         </Link>
         <Link className="link" to="programs">
           Programs
+        </Link>
+        <Link className="link" to="schedule">
+          Schedule
+        </Link>
+        <Link className="link" to="programs">
+          ScoreBoard
         </Link>
       </div>
       <Outlet  />

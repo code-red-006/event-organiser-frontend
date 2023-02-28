@@ -59,6 +59,27 @@ function ArtsPrograms() {
       }
     }
 
+    const convertTime = (time)=>{
+      var timeSplit = time.split(':'),
+      hours,
+      minutes,
+      meridian;
+    hours = timeSplit[0];
+    minutes = timeSplit[1];
+    if (hours > 12) {
+      meridian = 'PM';
+      hours -= 12;
+    } else if (hours < 12) {
+      meridian = 'AM';
+      if (hours == 0) {
+        hours = 12;
+      }
+    } else {
+      meridian = 'PM';
+    }
+    return(hours + ':' + minutes + ' ' + meridian);
+  };
+
 
   return (
     <div className='programs-list-div' style={{width: '100%'}}>
@@ -72,8 +93,8 @@ function ArtsPrograms() {
                     return <div key={index} data-id={program._id} data-groupe={false} data-index={index}  onClick={viewProgramDetails} className="program">
                       <h3>{program.program_name}</h3>
                       <div className="time-div">
-                        <p>start time: {program.start_time===''? <b>Not set</b>: program.start_time}</p>
-                        <p>report time: {program.report_time===''? <b>Not set</b>: program.report_time}</p>
+                        <p>start time: {program.start_time===''? <b>Not set</b>: convertTime(program.start_time)}</p>
+                        <p>report time: {program.report_time===''? <b>Not set</b>: convertTime(program.report_time)}</p>
                       </div>
                       <div className="controls">
                        <button data-id={program._id} onClick={removeProgram}  className='remove-btn'>Remove</button>
@@ -93,8 +114,8 @@ function ArtsPrograms() {
                     return <div key={index} data-id={program._id} data-groupe={true} data-index={index}  onClick={viewProgramDetails} className="program">
                       <h3>{program.program_name}</h3>
                       <div className="time-div">
-                        <p>start time: {program.start_time===''? <b>Not set</b>: program.start_time}</p>
-                        <p>report time: {program.report_time===''? <b>Not set</b>: program.report_time}</p>
+                        <p>start time: {program.start_time===''? <b>Not set</b>: convertTime(program.start_time)}</p>
+                        <p>report time: {program.report_time===''? <b>Not set</b>: convertTime(program.report_time)}</p>
                       </div>
                       <div className="controls">
                        <button data-id={program._id} onClick={removeProgram} data-groupe={true} className='remove-btn'>Remove</button>

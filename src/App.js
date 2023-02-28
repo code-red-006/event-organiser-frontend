@@ -32,10 +32,10 @@ function App() {
               <Route path='arts/:eventId' exact element={<ArtsHome />}>
                 <Route path='details' exact element={<ArtsDetails />} />
                 <Route path='programs' exact element={<ArtsPrograms />} />
+                <Route path='schedule' exact element={<ProgramSchedule />}></Route>
               </Route>
               <Route path='programs/single/:id' exact element={<SingleProgramDetails />} ></Route>
               <Route path='programs/groupe/:id' exact element={<GroupeProgramDetails />} ></Route>
-              <Route path='programs/schedule/:eventId' exact element={<ProgramSchedule />}></Route>
               <Route path='reset' exact element={<ResetPasswordForm />}></Route>
             </Route>
           {/* Users Routes another testing */}

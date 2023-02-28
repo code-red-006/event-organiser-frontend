@@ -6,7 +6,6 @@ import UserEvents from "../../users/home/UserEvents";
 
 function ArtsDetails() {
   const { eventId } = useParams();
-  console.log('hooi');
 
   const { data: event, pending } = useFetch(
     `${adminBaseURL}/events/${eventId}`,
