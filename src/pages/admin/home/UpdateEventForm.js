@@ -8,6 +8,7 @@ function UpdateEventForm({ edit }) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(null);
   const [house, setHouse] = useState("");
+  console.log(edit);
   
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -86,42 +87,6 @@ function UpdateEventForm({ edit }) {
             min={0}
           />
         </div>
-        <div className="type-div">
-          <label htmlFor="type">Type :</label>
-          <select onChange={handleChange} name="type" id="type">
-            <option value="Arts">Arts</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-        {data.type === "Arts" && (
-          <>
-            {" "}
-            <div className="name-div">
-              <label htmlFor="date">houses</label>
-              <input
-                onChange={handleHouse}
-                value={house}
-                type="text"
-                name="house"
-              />
-            </div>
-            <div className="add-house">
-              <button onClick={addHouse}>Add</button>
-            </div>
-            {data.houses.length > 0 && (
-              <div className="house-div">
-                {data.houses.map((item, key) => (
-                  <div className="house" key={key}>
-                    <p>{item}</p>
-                    <button data-index={key} onClick={removeHouse}>
-                      X
-                    </button>
-                  </div>
-                ))}
-              </div>
-            )}
-          </>
-        )}
         <input type="submit" />
       </form>
       {error && <span className="error">{error}</span>}
