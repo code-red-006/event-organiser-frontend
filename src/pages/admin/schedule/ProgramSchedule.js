@@ -348,7 +348,12 @@ function ProgramSchedule() {
       </div>}
       {  userInfo && <div className="wrapper">
           <div className="info-card">
-          <h2>{info.name}</h2>
+            <h1>{info.name}</h1>
+            <div>
+              <p>Chest no : <span>{info.chestNo}</span></p>
+              <p>Admission no: <span>{info.adm_no}</span></p>
+              <p>House : <span>{info.house}</span></p>
+            </div>
           </div>
           <button onClick={()=>setUserInfo(false)}>cancel</button>
       </div>}
