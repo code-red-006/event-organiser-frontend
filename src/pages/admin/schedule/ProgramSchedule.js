@@ -341,8 +341,25 @@ function ProgramSchedule() {
       </div>
       {/* EDIT HEAR */}
 {  groupInfo && <div className="wrapper">
-          <div className="info-card">
-          <h2>{info.group_name}</h2>
+          <div className="info-card-group">
+            <h1>{info.group_name}</h1>
+            <p>House : <span>{info.house}</span></p>
+            <h2>Participants</h2>
+            <div>
+              <h3>Leader</h3>
+              <div className="info-group-participant">
+                <p>Name : <span>{info.head_id.name}</span></p>
+                <p>Admisson No : <span>{info.head_id.adm_no}</span></p>
+              </div>
+              <h3>Participants</h3>
+              {info.members.map((participant , index)=>{
+                return ( <div className="info-group-participant">
+                  <p>Name : <span>{participant.name}</span></p>
+                  <p>Admission No : <span>{participant.adm_no}</span></p>
+                </div> )
+              })}
+            </div>
+
           </div>
           <button onClick={()=>setGroupInfo(false)}>cancel</button>
       </div>}
