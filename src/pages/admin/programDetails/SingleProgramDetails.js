@@ -123,7 +123,7 @@ function SingleProgramDetails() {
           {finish && <div className="wrapper">
             <div className="finish-div">
               <div className="first-div">
-              <label htmlFor="first">Select First</label>
+              <label htmlFor="first">Select First : </label>
               <select value={first} onChange={handleFirst} name="first" id="first">
                   <option value={-1}>select</option>
                 {programDetails.participants.map((item, index) => {
@@ -133,7 +133,7 @@ function SingleProgramDetails() {
               </select>
               </div>
               <div className="second-div">
-              <label htmlFor="second">Select Second</label>
+              <label htmlFor="second">Select Second : </label>
               <select onChange={handleSecond} name="second" id="second">
                   <option value={-1}>select</option>
                 {programDetails.participants.map((item, index) => {
@@ -143,7 +143,7 @@ function SingleProgramDetails() {
               </select>
               </div>
               <div className="third-div">
-              <label htmlFor="third">Select third</label>
+              <label htmlFor="third">Select third : </label>
               <select onChange={handleThird} name="third" id="third">
                   <option value={-1}>select</option>
                 {programDetails.participants.map((item, index) => {
@@ -152,7 +152,7 @@ function SingleProgramDetails() {
                 })}
               </select>
               </div>
- 
+              <button>Submit</button>
             </div>
             <button onClick={()=>setFinish(false)}>Cancel</button>
           </div>}
