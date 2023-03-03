@@ -50,29 +50,39 @@ function GroupeProgramDetails() {
             <button onClick={handleEdit}>Edit</button>
           </div>
         </div>
+
         <div className='participants-list'>
           <h2>Participants</h2>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
+          <div className='participants-table'>
+          
+          {programDetails.groups?
+            <table >
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Group Name</th>
+                  <th>House</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                {programDetails.groups.map((participant,index)=>{
+                  return (
+                    <tr>
+                      <td>{index + 1}</td>
+                      <td>{participant.group_name}</td>
+                      <td>{participant.house}</td>
+                    </tr>
+                  )
+                } )}
+              </tbody>
+            </table>
+            : <div>No Participant</div>
+          }
+          </div>
         </div>
+
+        
         {updateForm && <div className="wrapper">
           <UpdateProgramForm eventId={programDetails.event_id} groupe={true} prevData={programDetails} />
           <button onClick={()=>setUpdateForm(false)}>Cancel</button>
