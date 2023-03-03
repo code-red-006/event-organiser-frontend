@@ -63,8 +63,50 @@
 
 .info-card{
     background-color: white;
+    padding: 20px;
+    width: 280px;
+    border-radius: 10px;
+}
+.wrapper h1{
+    text-transform: capitalize;
+    text-align: center;
+    border-bottom: 4px solid #808080;
+    padding-bottom: 10px;
+    border-radius: 15px;
 }
 
+.info-card > div{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px;
+}
+.info-card span, .info-card-group span{
+    font-weight: bolder;
+    text-transform: capitalize;
+}
+
+.info-card-group{
+    background-color: white;
+    padding: 20px;
+    width: 280px;
+    border-radius: 10px;
+}
+
+.info-group-participant{
+    border: 2px solid black;
+    display: grid;
+    gap: 10px;
+    padding: 15px;
+}
+.info-card-group > div{
+    padding: 10px 20px 20px 20px ;
+    display: grid;
+    gap: 8px;
+}
+.info-card-group > p{
+    margin: 20px 0px;
+}
 
 
 
