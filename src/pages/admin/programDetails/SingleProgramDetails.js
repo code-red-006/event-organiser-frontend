@@ -52,6 +52,7 @@ function SingleProgramDetails() {
 
           </div>
         </div>
+
         <div className='participants-list'>
           <h2>Participants</h2>
           <div className='participants-table'>
@@ -82,9 +83,7 @@ function SingleProgramDetails() {
           }
           </div>
         </div>
-
-
-
+        
         {updateForm && <div className="wrapper">
           <UpdateProgramForm eventId={programDetails.event_id} groupe={false} prevData={programDetails} />
           <button onClick={()=>setUpdateForm(false)}>Cancel</button>
