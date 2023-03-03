@@ -52,26 +52,9 @@ function GroupeProgramDetails() {
         </div>
         <div className='participants-list'>
           <h2>Participants</h2>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
+          {programDetails.groups && programDetails.groups.map((item)=>{
+            return <h4>{item.group_name}</h4>
+          })}
         </div>
         {updateForm && <div className="wrapper">
           <UpdateProgramForm eventId={programDetails.event_id} groupe={true} prevData={programDetails} />

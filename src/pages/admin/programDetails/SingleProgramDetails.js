@@ -54,26 +54,9 @@ function SingleProgramDetails() {
         </div>
         <div className='participants-list'>
           <h2>Participants</h2>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
-          <div>Dummy</div>
+          {programDetails.participants && programDetails.participants.map((item)=>{
+            return <h4>{item.name}</h4>
+          })}
         </div>
         {updateForm && <div className="wrapper">
           <UpdateProgramForm eventId={programDetails.event_id} groupe={false} prevData={programDetails} />
