@@ -50,3 +50,30 @@
     text-transform: uppercase;
     padding: 10px;
 }
+
+.participants-list > .participants-table{
+    padding: 40px 200px;
+}
+
+.participants-table > table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.participants-table > table td , .participants-table > table th{
+    border: 1px solid #ddd;
+    padding: 8px;
+} 
+.participants-table > table tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+.participants-table > table tr:hover{
+    background-color: #ddd;
+}
+.participants-table > table th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #000000;
+    color: #ffffff;
+}

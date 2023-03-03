@@ -54,10 +54,37 @@ function SingleProgramDetails() {
         </div>
         <div className='participants-list'>
           <h2>Participants</h2>
-          {programDetails.participants && programDetails.participants.map((item)=>{
-            return <h4>{item.name}</h4>
-          })}
+          <div className='participants-table'>
+          
+          {programDetails.participants?
+            <table >
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Chest No.</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                {programDetails.participants.map((participant,index)=>{
+                  return (
+                    <tr>
+                      <td>{index + 1}</td>
+                      <td>{participant.name}</td>
+                      <td>{participant.chestNo}</td>
+                    </tr>
+                  )
+                } )}
+              </tbody>
+            </table>
+            : <div>No Participant</div>
+          }
+          </div>
         </div>
+
+
+
         {updateForm && <div className="wrapper">
           <UpdateProgramForm eventId={programDetails.event_id} groupe={false} prevData={programDetails} />
           <button onClick={()=>setUpdateForm(false)}>Cancel</button>
