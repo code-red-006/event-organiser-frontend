@@ -77,3 +77,19 @@
     background-color: #000000;
     color: #ffffff;
 }
+
+.finish-div{
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 35px 50px;
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: 20px;
+}
+
+
+.finish-div select, .finish-div button{
+    padding: 5px 10px;
+    width: 100px;
+}
