@@ -53,6 +53,7 @@ function GroupeProgramDetails() {
 
         <div className='participants-list'>
           <h2>Participants</h2>
+<<<<<<< HEAD
           <div className='participants-table'>
           
           {programDetails.groups?
@@ -80,6 +81,11 @@ function GroupeProgramDetails() {
             : <div>No Participant</div>
           }
           </div>
+=======
+          {programDetails.groups && programDetails.groups.map((item)=>{
+            return <h4>{item.group_name}</h4>
+          })}
+>>>>>>> c6d5eafbd48e2660e57b28f4786a8271ac2baa82
         </div>
 
         
