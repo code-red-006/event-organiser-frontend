@@ -10,7 +10,12 @@ function SingleProgramDetails() {
   const { id } = useParams()
   const {data: programDetails, pending} = useFetch(`${adminBaseURL}/events/programs/single/${id}`, 'singleProgram')
   const [loading, setLoading] = useState(true);
-  const [updateForm, setUpdateForm] = useState(false)
+  const [updateForm, setUpdateForm] = useState(false);
+  const [finish, setFinish] = useState(false);
+  const [first, setFirst] = useState(-1);
+  const [second, setSecond] = useState(-1);
+  const [third, setThird] = useState(-1);
+
   const navigate = useNavigate()
 
   useEffect(()=>{
@@ -24,6 +29,31 @@ function SingleProgramDetails() {
   const handleEdit= (e)=>{
     e.preventDefault();
     setUpdateForm(true);
+  }
+
+  const handleFinish = () => {
+
+  }
+
+  const handleFirst = (e) => {
+    console.log(e.target.value);
+    if(e.target.value == -1) return window.alert("Please select an option");
+    if(e.target.value == second || e.target.value == third) return window.alert("This person already selected");
+    setFirst(e.target.value);
+  }
+
+  const handleSecond = (e) => {
+    console.log(e.target.value);
+    if(e.target.value == -1) return window.alert("Please select an option");
+    if(e.target.value == first || e.target.value == third) return window.alert("This person already selected");
+    setSecond(e.target.value);
+  }
+
+  const handleThird = (e) => {
+    console.log(e.target.value);
+    if(e.target.value == -1) return window.alert("Please select an option");
+    if(e.target.value == first || e.target.value == second) return window.alert("This person already selected");
+    setThird(e.target.value);
   }
   
   return (
@@ -49,6 +79,7 @@ function SingleProgramDetails() {
             </div>}
 
             <button onClick={handleEdit}>Edit</button>
+            <button onClick={programDetails.finished? null: ()=>setFinish(true)}>{programDetails.finished? "Finished": "Finish"}</button>
 
           </div>
         </div>
@@ -89,6 +120,44 @@ function SingleProgramDetails() {
           <UpdateProgramForm eventId={programDetails.event_id} groupe={false} prevData={programDetails} />
           <button onClick={()=>setUpdateForm(false)}>Cancel</button>
         </div>}
+
+          {finish && <div className="wrapper">
+            <div className="finish-div">
+              <div className="first-div">
+              <label htmlFor="first">Select First</label>
+              <select value={first} onChange={handleFirst} name="first" id="first">
+                  <option value={-1}>select</option>
+                {programDetails.participants.map((item, index) => {
+                  if(index == second || third == index) return ''
+                  return <option value={index}>{item.chestNo}</option>
+                })}
+              </select>
+              </div>
+              <div className="second-div">
+              <label htmlFor="second">Select Second</label>
+              <select onChange={handleSecond} name="second" id="second">
+                  <option value={-1}>select</option>
+                {programDetails.participants.map((item, index) => {
+                  if(index == third || first == index) return ''
+                  return <option value={index}>{item.chestNo}</option>
+                })}
+              </select>
+              </div>
+              <div className="third-div">
+              <label htmlFor="third">Select third</label>
+              <select onChange={handleThird} name="third" id="third">
+                  <option value={-1}>select</option>
+                {programDetails.participants.map((item, index) => {
+                  if(index == second || first == index) return ''
+                  return <option value={index}>{item.chestNo}</option>
+                })}
+              </select>
+              </div>
+ 
+            </div>
+            <button onClick={()=>setFinish(false)}>Cancel</button>
+          </div>}
+
     </div>
   )
 }
