@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { adminBaseURL } from '../../../constants'
@@ -31,28 +32,55 @@ function SingleProgramDetails() {
     setUpdateForm(true);
   }
 
-  const handleFinish = () => {
-
+  const handleFinish = async() => {
+    if(first == -1 && (second != -1 || third != -1)) return window.alert("select first position");
+    if(first == -1) return window.alert("select a winner")
+    const sure = window.confirm("Are you sure about the results");
+    if(sure){
+      const url = `${adminBaseURL}/programs/finish/single/${id}`
+      const data = {
+        first: {
+          id: programDetails.participants[first]._id,
+          house: programDetails.participants[first].house
+        },
+        second: second == -1? -1:  {
+          id: programDetails.participants[second]._id,
+          house: programDetails.participants[second].house
+        },
+        third: third == -1? -1:  {
+          id: programDetails.participants[third]._id,
+          house: programDetails.participants[third].house
+        },
+        eventId: programDetails.event_id
+      }
+      try {
+        const token = localStorage.getItem("token");
+        const res = await axios.post(url, data, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        console.log(res);
+        window.location.reload();
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
 
   const handleFirst = (e) => {
     console.log(e.target.value);
-    if(e.target.value == -1) return window.alert("Please select an option");
-    if(e.target.value == second || e.target.value == third) return window.alert("This person already selected");
+    if((e.target.value == second && e.target.value != -1) || (e.target.value == third && e.target.value != -1)) return window.alert("This person already selected");
     setFirst(e.target.value);
   }
 
   const handleSecond = (e) => {
     console.log(e.target.value);
-    if(e.target.value == -1) return window.alert("Please select an option");
-    if(e.target.value == first || e.target.value == third) return window.alert("This person already selected");
+    if((e.target.value == first && first != -1) || (e.target.value == third && third != -1)) return window.alert("This person already selected");
     setSecond(e.target.value);
   }
 
   const handleThird = (e) => {
     console.log(e.target.value);
-    if(e.target.value == -1) return window.alert("Please select an option");
-    if(e.target.value == first || e.target.value == second) return window.alert("This person already selected");
+    if((e.target.value == first && e.target.value != -1) || (e.target.value == second && e.target.value != -1)) return window.alert("This person already selected");
     setThird(e.target.value);
   }
   
@@ -152,7 +180,7 @@ function SingleProgramDetails() {
                 })}
               </select>
               </div>
-              <button>Submit</button>
+              <button onClick={handleFinish}>Submit</button>
             </div>
             <button onClick={()=>setFinish(false)}>Cancel</button>
           </div>}
