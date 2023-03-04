@@ -32,27 +32,29 @@ function SingleProgramDetails() {
   }
 
   const handleFinish = () => {
-
+    if(first == -1 && (second != -1 || third != -1)) return window.alert("select first position");
+    if(first == -1) return window.alert("select a winner")
+    const sure = window.confirm("Are you sure about the results");
+    if(sure){
+      
+    }
   }
 
   const handleFirst = (e) => {
     console.log(e.target.value);
-    if(e.target.value == -1) return window.alert("Please select an option");
-    if(e.target.value == second || e.target.value == third) return window.alert("This person already selected");
+    if((e.target.value == second && e.target.value != -1) || (e.target.value == third && e.target.value != -1)) return window.alert("This person already selected");
     setFirst(e.target.value);
   }
 
   const handleSecond = (e) => {
     console.log(e.target.value);
-    if(e.target.value == -1) return window.alert("Please select an option");
-    if(e.target.value == first || e.target.value == third) return window.alert("This person already selected");
+    if((e.target.value == first && first != -1) || (e.target.value == third && third != -1)) return window.alert("This person already selected");
     setSecond(e.target.value);
   }
 
   const handleThird = (e) => {
     console.log(e.target.value);
-    if(e.target.value == -1) return window.alert("Please select an option");
-    if(e.target.value == first || e.target.value == second) return window.alert("This person already selected");
+    if((e.target.value == first && e.target.value != -1) || (e.target.value == second && e.target.value != -1)) return window.alert("This person already selected");
     setThird(e.target.value);
   }
   
@@ -152,7 +154,7 @@ function SingleProgramDetails() {
                 })}
               </select>
               </div>
-              <button>Submit</button>
+              <button onClick={handleFinish}>Submit</button>
             </div>
             <button onClick={()=>setFinish(false)}>Cancel</button>
           </div>}
