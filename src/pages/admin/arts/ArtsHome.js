@@ -58,7 +58,7 @@ function ArtsHome() {
         <Link className="link" to="schedule">
           Schedule
         </Link>
-        <Link className="link" to="programs">
+        <Link className="link" to="score">
           ScoreBoard
         </Link>
       </div>

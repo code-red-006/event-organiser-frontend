@@ -18,6 +18,7 @@ import UserProgramList from './pages/users/home/UserProgramList'
 import ArtsHome from './pages/admin/arts/ArtsHome'
 import ArtsDetails from './pages/admin/arts/ArtsDetails'
 import ArtsPrograms from './pages/admin/arts/ArtsPrograms'
+import ArtsScore from './pages/admin/arts/ArtsScore'
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
                 <Route path='details' exact element={<ArtsDetails />} />
                 <Route path='programs' exact element={<ArtsPrograms />} />
                 <Route path='schedule' exact element={<ProgramSchedule />}></Route>
+                <Route path='score' exact element={<ArtsScore />} />
               </Route>
               <Route path='programs/single/:id' exact element={<SingleProgramDetails />} ></Route>
               <Route path='programs/groupe/:id' exact element={<GroupeProgramDetails />} ></Route>
