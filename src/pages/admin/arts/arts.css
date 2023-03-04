@@ -1,7 +1,11 @@
+
+
 .arts-home{
     display: flex;
     padding: 1rem;
     overflow-y: scroll;
+    margin-bottom: 40px;
+    background-color:#f1f1fb;
 }
 
 .arts-home > .navbar{
@@ -11,9 +15,10 @@
     border-radius: 1rem;
     background-color: white;
     position: fixed;
-    bottom: 20px;
+    bottom: 0;
     justify-items: center;
     align-content: center;
+    padding-bottom: 25px;
 }
 
 .arts-home > .navbar > a{
@@ -99,3 +104,4 @@
     border-radius: 15px;
     text-transform: capitalize;
 }
+
