@@ -7,31 +7,33 @@
 .arts-home > .navbar{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    width: 80%;
-    border: 1px solid black;
+    width: 95%;
     border-radius: 1rem;
-    background-color: black;
+    background-color: white;
     position: fixed;
+    bottom: 20px;
+    justify-items: center;
+    align-content: center;
 }
 
 .arts-home > .navbar > a{
-    border-radius: 1rem;
+    font-size: larger;
     text-decoration: none;
-    color: white;
+    color: black;
     padding: 1rem;
     display: flex;
     justify-content: center;
-    transition: .4s;
+    transition: 0.3;
 }
 
 .arts-home > .navbar > a:hover{
-    color: black;
-    background-color: white;
+   border-bottom: 3px solid rgba(105, 87, 232, 0.56);
 }
 
 .clicked{
     color: black !important;
     background-color: white !important;
+    border-bottom: 3px solid #6957e8;
 }
 
 .arts-details h1{

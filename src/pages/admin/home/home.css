@@ -2,12 +2,13 @@
     width: 100vw;
     height: 100vh;
     display: grid;
+    grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
 }
 
 .admin-home > .admin-body{
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr;
     grid-row: 2 / 3;
     overflow-y: scroll;
 }
