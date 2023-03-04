@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { adminBaseURL } from '../../../constants'
@@ -31,12 +32,37 @@ function SingleProgramDetails() {
     setUpdateForm(true);
   }
 
-  const handleFinish = () => {
+  const handleFinish = async() => {
     if(first == -1 && (second != -1 || third != -1)) return window.alert("select first position");
     if(first == -1) return window.alert("select a winner")
     const sure = window.confirm("Are you sure about the results");
     if(sure){
-      
+      const url = `${adminBaseURL}/programs/finish/single/${id}`
+      const data = {
+        first: {
+          id: programDetails.participants[first]._id,
+          house: programDetails.participants[first].house
+        },
+        second: second == -1? -1:  {
+          id: programDetails.participants[second]._id,
+          house: programDetails.participants[second].house
+        },
+        third: third == -1? -1:  {
+          id: programDetails.participants[third]._id,
+          house: programDetails.participants[third].house
+        },
+        eventId: programDetails.event_id
+      }
+      try {
+        const token = localStorage.getItem("token");
+        const res = await axios.post(url, data, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        console.log(res);
+        window.location.reload();
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 
