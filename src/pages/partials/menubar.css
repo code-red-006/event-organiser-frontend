@@ -3,9 +3,7 @@
     flex-direction: column;
     background-color:#6957e8;
     padding-top: 200px;
-    height: 100vh;
     grid-row: 1 / 3;
-    height: 100vh;
 }
 
 .menu-bar > .option > a{
