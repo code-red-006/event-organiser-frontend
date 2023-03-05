@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-image: url("./../../../images/loginbg.png");
+    background-image: url("../../../images/loginbg.png");
     /* object-fit: cover; */
 }
 
