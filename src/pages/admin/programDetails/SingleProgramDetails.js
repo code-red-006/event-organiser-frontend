@@ -95,6 +95,7 @@ function SingleProgramDetails() {
                   <th>#</th>
                   <th>Name</th>
                   <th>Chest No.</th>
+                  <th>House</th>
                 </tr>
               </thead>
               <tbody>
@@ -105,6 +106,7 @@ function SingleProgramDetails() {
                       <td>{index + 1}</td>
                       <td>{participant.name}</td>
                       <td>{participant.chestNo}</td>
+                      <td>{participant.house}</td>
                     </tr>
                   )
                 } )}
