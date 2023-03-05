@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap');
+
 .admin-login{
     width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-image: url("./../../../images/loginbg.png");
+    /* object-fit: cover; */
 }
 
 .admin-login > .title{
@@ -12,35 +16,49 @@
     font-size: 3rem;
 }
 
-.admin-login > form{
+.admin-login > .contents{
+    position: fixed;
+    top: 50px;
+    right: 260px;
+}
+
+
+.admin-login > .contents >  form{
     display: flex;
     flex-direction: column;
     padding: 1rem;
     border-radius: 5px;
     gap: 10px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    background-color: rgba(0, 0, 0, 0);
 }
 
-.admin-login > form > .username-div, .admin-login > form > .password-div{
+.admin-login > .contents > form > .username-div, .admin-login > .contents > form > .password-div{
     display: flex;
     flex-direction: column;
 }
 
-.admin-login > form > .username-div> label, .admin-login > form > .password-div > label{
-    font-size: 1.1rem;
-    font-weight: 400;
+.admin-login > .contents > form >  .username-div> label, .admin-login > .contents > form > .password-div > label{
+    font-size: 1rem;
+    font-weight:bold;
+    text-transform: capitalize;
+    font-family: 'Roboto Mono', monospace;
     
 }
-
-.admin-login > form input[type="text"], .admin-login > form input[type="password"]{
+.admin-login > .contents > form input[type="text"], .admin-login > .contents > form input[type="password"]{
     padding: .3rem;
     min-width: 20vw;
-    border: 2px solid rgba(0, 0, 0, 0.412);
-    border-radius: 5px;
     font-size: 1.2rem;
+    border:none;
+    background-color: rgba(0,0,0,0);
+    border-bottom:2px solid #D0CBF8;
+
+}
+.admin-login > .contents > form input[type="text"]:focus, .admin-login > .contents > form input[type="password"]:focus{
+    outline: none;
+    border-bottom:2px solid#6957e8 ;
 }
 
-.admin-login > form input[type="submit"]{
+.admin-login > .contents > form input[type="submit"]{
     width: fit-content;
     padding: .3rem .5rem;
     margin: 0 auto;
@@ -48,23 +66,17 @@
     border-radius: 3px;
     font-weight: 400;
     color: white;
-    background-color: black;
+    background-color: #6957e8;
     margin-top: .5rem;
     cursor: pointer;
     transition: .4s;
-    border: 2px solid black;
+    border: 2px solid #6957e8;
     font-family: sans-serif;
 }
 
-.admin-login > form input[type="submit"]:hover{
-    background-color: white;
+.admin-login > .contents > form input[type="submit"]:hover{
+    background-color: #6957e8;
     color: black; 
-}
-
-.admin-login > p{
-    margin: 1rem;
-    font-family: 'Playball', cursive;
-    font-size: 1.5rem;
 }
 
 .admin-login > .error{
@@ -72,3 +84,5 @@
     margin: .6rem;
 }
 
+
+    
