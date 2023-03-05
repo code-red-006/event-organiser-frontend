@@ -27,8 +27,8 @@ function AdminHome() {
     <div className='admin-home'>
       {loading && <Spinner loading={loading} />}
       <Header data={data} logOut={logOut} />
-      <div className="admin-body">
         <MenuBar reset='/admin/reset' home='/admin' />
+      <div className="admin-body">
         <Outlet />
       </div>
     </div>
