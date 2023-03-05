@@ -89,9 +89,10 @@ function SingleProgramDetails() {
       {loading && <Spinner loading={loading} />}
         <div className='program-header'>
           <h1> {programDetails.program_name} </h1>
+          <div className='program-description'>
           <p> {programDetails.description} </p>
+          </div>
           <div className='program-time'>
-
             <div>
               <h3>Starting time</h3>
               <span> {programDetails.start_time} </span>
