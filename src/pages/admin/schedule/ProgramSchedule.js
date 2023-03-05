@@ -93,6 +93,7 @@ function ProgramSchedule() {
         <table cellSpacing={0} ref={tableRef1}>
           <tr>
             <th rowSpan={2}>Program</th>
+            <th rowSpan={2}>Type</th>
             <th rowSpan={2}>Time</th>
             <th colSpan={2}>Participants</th>
           </tr>
@@ -122,6 +123,20 @@ function ProgramSchedule() {
                       }
                     >
                       {program.program_name}
+                    </td>
+                    <td
+                      rowSpan={
+                        program.groupe
+                          ? program.groups.length == 0
+                            ? false
+                            : program.groups.length
+                          : program.participants.length == 0
+                          ? false
+                          : program.participants.length
+                      }
+                      className="type"
+                    >
+                      {program.groupe? 'GROUP': 'SINGLE'}
                     </td>
                     <td
                       rowSpan={

@@ -41,7 +41,7 @@
     cursor: pointer;
 }
 
-.finish, .time{
+.finish, .time, .type{
     text-align: center;
 }
 
