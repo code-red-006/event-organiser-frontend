@@ -1,37 +1,44 @@
+
+
 .arts-home{
     display: flex;
     padding: 1rem;
     overflow-y: scroll;
+    margin-bottom: 40px;
+    background-color:#f1f1fb;
 }
 
 .arts-home > .navbar{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    width: 80%;
-    border: 1px solid black;
+    width: 95%;
     border-radius: 1rem;
-    background-color: black;
+    background-color: white;
     position: fixed;
+    bottom: 0;
+    justify-items: center;
+    align-content: center;
+    padding-bottom: 25px;
 }
 
 .arts-home > .navbar > a{
-    border-radius: 1rem;
+    font-size: larger;
     text-decoration: none;
-    color: white;
+    color: black;
     padding: 1rem;
     display: flex;
     justify-content: center;
-    transition: .4s;
+    transition: 0.3;
 }
 
 .arts-home > .navbar > a:hover{
-    color: black;
-    background-color: white;
+   border-bottom: 3px solid rgba(105, 87, 232, 0.56);
 }
 
 .clicked{
     color: black !important;
     background-color: white !important;
+    border-bottom: 3px solid #6957e8;
 }
 
 .arts-details h1{
@@ -96,4 +103,31 @@
     padding : 20px;
     border-radius: 15px;
     text-transform: capitalize;
+}
+.arts-score{
+    padding: 5rem;
+    width: 100%;
+}
+.arts-score > table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.arts-score table td , .arts-score > table th{
+    border: 1px solid #ddd;
+    padding: 15px;
+} 
+
+.arts-score > table tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+.arts-score > table tr:hover{
+    background-color: #ddd;
+}
+.arts-score > table th{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: left;
+    background-color: #5a46e6;
+    color: #ffffff;
 }

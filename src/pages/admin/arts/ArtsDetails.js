@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { adminBaseURL } from "../../../constants";
 import { useFetch } from "../../../hooks/useFetch";
-import UserEvents from "../../users/home/UserEvents";
 
 function ArtsDetails() {
   const { eventId } = useParams();
