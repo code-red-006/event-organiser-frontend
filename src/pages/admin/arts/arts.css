@@ -18,16 +18,17 @@
     bottom: 0;
     justify-items: center;
     align-content: center;
-    padding-bottom: 25px;
+    padding-bottom: 10px;
 }
 
 .arts-home > .navbar > a{
-    font-size: larger;
+    font-size: large;
     text-decoration: none;
     color: black;
-    padding: 1rem;
+    padding: .5rem;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     transition: 0.3;
 }
 
@@ -104,4 +105,34 @@
     border-radius: 15px;
     text-transform: capitalize;
 }
+.arts-score{
+    padding: 2rem 5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: scroll;
+}
+.arts-score > table{
+    width: 100%;
+    border-collapse: collapse;
+}
 
+.arts-score table td , .arts-score > table th{
+    border: 1px solid #ddd;
+    padding: 15px;
+} 
+
+.arts-score > table tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+.arts-score > table tr:hover{
+    background-color: #ddd;
+}
+.arts-score > table th{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: left;
+    background-color: #5a46e6;
+    color: #ffffff;
+}
