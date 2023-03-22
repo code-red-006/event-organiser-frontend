@@ -12,6 +12,7 @@ export const useFetch = (url, name) => {
             try {
               const res = await axios.get(url, { headers: {'Authorization': `Bearer ${token}`}});
               setData(res.data[name])
+             // console.log(res.data);
               setPending(false);
             } catch (error) {
               console.log(error);
