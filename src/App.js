@@ -43,7 +43,7 @@ function App() {
           {/* Users Routes another testing */}
           <Route path='/register' exact element={<UserRegister />}></Route>
           <Route path='/login' exact element={<Userlogin />}></Route>
-          <Route path='/' exact element={<Home />}>
+          <Route path='/' exact element={<Navigate to='/admin' />}>
           <Route index element={<Navigate to='events' />} ></Route>
               <Route path='events' exact element={<UserEvents />} ></Route>
               <Route path='events/programs' exact element={<UserProgramList />} ></Route>

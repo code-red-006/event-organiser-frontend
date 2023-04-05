@@ -19,7 +19,6 @@ function AdminLogin() {
 
   const inputs = document.querySelectorAll(".input");
 
-
 function addcl(){
 	let parent = this.parentNode.parentNode;
 	parent.classList.add("focus");
@@ -51,7 +50,6 @@ inputs.forEach(input => {
   };
 
   const handleSubmit = async(e) =>{
-    console.log(data);
     setloading(true)
     e.preventDefault()
     setError('')
