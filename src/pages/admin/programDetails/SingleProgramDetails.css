@@ -8,7 +8,7 @@
 }
 .program-header h1{
     text-align: center;
-    background-color: #6957e8;
+    background-color: #2cc48c;
     color: #ffffff;
     text-transform: uppercase;
     padding: 10px;
@@ -60,10 +60,10 @@
 
 .program-time button{
     background-color: #ffffff;
-    color: #6957e8;
+    color: #2cc48c;
     font-weight: bolder;
     font-size: large;
-    border: 2px solid #6957e8;
+    border: 2px solid #2cc48c;
     border-radius: 10px;
     padding: 3.5px;
     cursor: pointer;
@@ -72,7 +72,7 @@
 }
 
 .program-time button:hover{
-    background-color: #087cfc;
+    background-color: #2cc48c;
     color: #ffffff;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 28px, rgba(0, 0, 0, 0.22) 0px 5px 10px;
 }
@@ -80,7 +80,7 @@
 
 .participants-list > h2{
     text-align: center;
-    background-color: #6957e8;
+    background-color: #9bc9ab;
     color: #ffffff;
     text-transform: uppercase;
     padding: 10px;
@@ -109,7 +109,7 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #5a46e6;
+    background-color: #2cc48c;
     color: #ffffff;
 }
 
