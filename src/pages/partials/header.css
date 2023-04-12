@@ -1,5 +1,5 @@
 .header{
-    background-color: #f1f1fb;
+    background-color: #f1fcf8;
     color: white;
     padding: 1rem 3rem;
     display: flex;
@@ -25,8 +25,8 @@
 .header > .username > .box1{
     padding: .1rem .5rem;   
     cursor: pointer;
-    border: 2px solid #6957e8;
-    background-color: #6957e8;
+    border: 2px solid #2cc48c;
+    background-color: #2cc48c;
     height: 32px;
     width: 60px;
     font-size: 20px;
@@ -39,8 +39,8 @@
     padding: .4rem;    
     padding: .1rem .5rem;   
     cursor: pointer;
-    border: 2px solid #6957e8;
-    background-color: #6957e8;
+    border: 2px solid #2cc48c;
+    background-color: #2cc48c;
     height: 32px;
     width: 70px;
     font-size: 20px;
@@ -50,13 +50,13 @@
 }
 
 .header > .username > .box2:hover{
-    border: 2px solid #6957e8;
-    color: #6957e8;
+    border: 2px solid #2cc48c;
+    color: #2cc48c;
     background-color: white;
 
 }
 .header > .username > .box1:hover{
-    border: 2px solid #6957e8;
-    color: #6957e8;
+    border: 2px solid #2cc48c;
+    color: #2cc48c;
     background-color: white;
 }

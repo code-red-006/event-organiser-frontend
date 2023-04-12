@@ -109,7 +109,7 @@ function SingleProgramDetails() {
             </div>}
             <div className='buttons'>
               <button onClick={handleEdit}>Edit</button>
-              <button onClick={programDetails.finished? null: ()=>setFinish(true)}>{programDetails.finished? "Finished": "Finish"}</button>
+              {programDetails.type && <button onClick={programDetails.finished? null: ()=>setFinish(true)}>{programDetails.finished? "Finished": "Finish"}</button>}
             </div>
 
           </div>
@@ -126,7 +126,7 @@ function SingleProgramDetails() {
                   <th>#</th>
                   <th>Name</th>
                   <th>Chest No.</th>
-                  <th>House</th>
+                  {programDetails.type && <th>House</th>}
                 </tr>
               </thead>
               <tbody>
@@ -137,7 +137,7 @@ function SingleProgramDetails() {
                       <td>{index + 1}</td>
                       <td>{participant.name}</td>
                       <td>{participant.chestNo}</td>
-                      <td>{participant.house}</td>
+                      {programDetails.type && <td>{participant.house}</td>}
                     </tr>
                   )
                 } )}

@@ -5,7 +5,7 @@
     padding: 1rem;
     overflow-y: scroll;
     margin-bottom: 40px;
-    background-color:#f1f1fb;
+    background-color:#f1fcf8;
 }
 
 .arts-home > .navbar{
@@ -13,7 +13,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 95%;
     border-radius: 1rem;
-    background-color: white;
+    background-color:#f1fcf8;
     position: fixed;
     bottom: 0;
     justify-items: center;
@@ -39,7 +39,7 @@
 .clicked{
     color: black !important;
     background-color: white !important;
-    border-bottom: 3px solid #6957e8;
+    border-bottom: 3px solid #2cc48c;
 }
 
 .arts-details h1{
@@ -133,6 +133,6 @@
     padding-top: 20px;
     padding-bottom: 20px;
     text-align: left;
-    background-color: #5a46e6;
+    background-color: #24a374;
     color: #ffffff;
 }

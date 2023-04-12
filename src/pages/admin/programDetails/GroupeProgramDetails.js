@@ -90,30 +90,35 @@ function GroupeProgramDetails() {
 
   return (
     <div className='program-details'>
-      {loading && <Spinner loading={loading} />}
-        <div className='program-header'>
-          <h1> {programDetails.program_name} </h1>
-          <p> {programDetails.description} </p>
-          <div className='program-time'>
+    {loading && <Spinner loading={loading} />}
+      <div className='program-header'>
+        <h1> {programDetails.program_name} </h1>
+        <div className='program-time'>
+          <div className='description'>
+            <p> {programDetails.description} </p>
+          </div>
 
-            <div>
-              <h3>Starting time</h3>
-              <span> {programDetails.start_time} </span>
-            </div>
-            <div>
-              <h3>Reporting time</h3>
-              <span> {programDetails.report_time} </span>
-            </div>
+          <div className='start-time'>
+            <span>Starting time</span>
+            <h3> {programDetails.start_time} </h3>
+          </div>
+          <div className='report-time'>
+            <span>Reporting time</span>
+            <h3> {programDetails.report_time} </h3>
+          </div>
 
-            {programDetails.type && <div>
-              <h3>type</h3>
-              <span> {programDetails.type} </span>
-            </div>}
-
+          {programDetails.type && <div className='type'>
+              <span>type</span>
+              <h3> {programDetails.type} </h3>
+          </div>}
+          <div className='buttons'>
             <button onClick={handleEdit}>Edit</button>
             <button onClick={programDetails.finished? null: ()=>setFinish(true)}>{programDetails.finished? "Finished": "Finish"}</button>
           </div>
+
         </div>
+      </div>
+
 
         <div className='participants-list'>
           <h2>Participants</h2>
