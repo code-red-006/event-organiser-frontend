@@ -30,6 +30,7 @@ function App() {
               <Route index element={<Navigate to='events' />} ></Route>
               <Route path='events' exact element={<EventList url={`${adminBaseURL}/events`} isAdmin={true} />} ></Route>
               <Route path='programs/:eventId' exact element={<ProgramsList />}></Route>
+              <Route path='programs/schedule/:eventId' exact element={<ProgramSchedule />}></Route>
               <Route path='arts/:eventId' exact element={<ArtsHome />}>
                 <Route path='details' exact element={<ArtsDetails />} />
                 <Route path='programs' exact element={<ArtsPrograms />} />

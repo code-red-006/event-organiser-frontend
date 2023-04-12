@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { adminBaseURL } from '../../../constants';
 import { useFetch } from '../../../hooks/useFetch';
@@ -10,17 +10,25 @@ function ArtsScore() {
         `${adminBaseURL}/events/score/${eventId}`,
         "scores"
     );
+
+    const [points, setPoint] = useState([]);
     
-    const { data: points, pending: p2 } = useFetch(
+    const { data: participants, pending: p2 } = useFetch(
         `${adminBaseURL}/participants/score/${eventId}`,
         "participants"
     );
 
     useEffect(()=>{
-      if(!(p1 && p2)){
-        console.log(points);
+      if(!p2){
+        let temp = []
+        participants.forEach((item)=>{
+          item.events.forEach((item)=>{
+            if(item.event_id == eventId) temp.push(item.points)
+          })
+        })
+        setPoint([...temp])
       }
-    }, [p1, p2])
+    }, [p2])
     
   return (
     <div className='arts-score'>
@@ -58,13 +66,13 @@ function ArtsScore() {
         </thead>
         <tbody>
 
-          {points.map((point,index)=>{
+          {participants.map((point,index)=>{
             return (
               <tr>
                 <td>{index + 1}</td>
                 <td>{point.name}</td>
                 <td>{point.house}</td>
-                <td>{point.points}</td>
+                <td>{points[index]}</td>
               </tr>
             )
           } )}

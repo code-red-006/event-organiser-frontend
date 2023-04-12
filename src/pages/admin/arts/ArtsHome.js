@@ -18,6 +18,7 @@ function ArtsHome() {
   }
 
   useEffect(() => {
+    console.log('hello');
     let elem;
     switch (loc[loc.length - 1]) {
       case "details":
