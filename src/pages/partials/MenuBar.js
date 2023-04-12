@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./menubar.css";
 
-function MenuBar({ reset, home }) {
+function MenuBar({ reset, home, about }) {
   return (
     <div className="menu-bar">
       <div className="option">
@@ -16,7 +16,7 @@ function MenuBar({ reset, home }) {
         </Link>
       </div>
       <div className="option">
-        <Link>
+        <Link to={about}>
           <span class="material-symbols-outlined">info</span>
         </Link>
       </div>

@@ -19,6 +19,7 @@ import ArtsHome from './pages/admin/arts/ArtsHome'
 import ArtsDetails from './pages/admin/arts/ArtsDetails'
 import ArtsPrograms from './pages/admin/arts/ArtsPrograms'
 import ArtsScore from './pages/admin/arts/ArtsScore'
+import About from './pages/admin/About'
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
               <Route path='events' exact element={<EventList url={`${adminBaseURL}/events`} isAdmin={true} />} ></Route>
               <Route path='programs/:eventId' exact element={<ProgramsList />}></Route>
               <Route path='programs/schedule/:eventId' exact element={<ProgramSchedule />}></Route>
+              <Route path='about' exact element={<About />}></Route>
               <Route path='arts/:eventId' exact element={<ArtsHome />}>
                 <Route path='details' exact element={<ArtsDetails />} />
                 <Route path='programs' exact element={<ArtsPrograms />} />
