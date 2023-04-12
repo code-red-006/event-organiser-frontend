@@ -21,6 +21,7 @@ function ArtsScore() {
     useEffect(()=>{
       if(!p2){
         let temp = []
+        console.log(participants);
         participants.forEach((item)=>{
           item.events.forEach((item)=>{
             if(item.event_id == eventId) temp.push(item.points)
